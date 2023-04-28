@@ -1,0 +1,15 @@
+@use 'base';
+
+// pages
+@forward 'pages/home';
+
+
+body {
+    font-family: base.$body-fontstack;
+    background-color: base.$black-800;
+    color: base.$white;
+}
+
+main {
+    height: 100%;
+}

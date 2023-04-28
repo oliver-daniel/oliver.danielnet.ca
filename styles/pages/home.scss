@@ -1,0 +1,183 @@
+@use "../base";
+
+@mixin pattern-background {
+  background: url("../../public/svg/bgtile.svg") repeat left top;
+  background-color: base.$black-800;
+}
+
+body:has(#home) {
+  @include pattern-background;
+}
+
+@supports not selector(:has(a, b)) {
+  main#home {
+    @include pattern-background;
+  }
+}
+
+@media (min-width: 992px) {
+  main#home {
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      height: 100%;
+      right: -3%;
+      width: 6px;
+      background: linear-gradient(
+        transparent,
+        base.$blue-200,
+        base.$turquoise-200,
+        base.$yellow-200,
+        base.$pink-200,
+        base.$purple-200
+      );
+      background-color: transparent;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      height: 100%;
+      left: -3%;
+      width: 6px;
+      background: linear-gradient(
+        transparent,
+        base.$blue-200,
+        base.$turquoise-200,
+        base.$yellow-200,
+        base.$pink-200,
+        base.$purple-200
+      );
+      background-color: transparent;
+    }
+  }
+}
+
+@mixin rainbow-border {
+  $stripes: (0deg transparent);
+
+  @for $i from 1 through length(base.$palette-dark) {
+    $color: nth(base.$palette-dark, $i);
+
+    $stripes: append($stripes, $color #{9 * $i}px, comma);
+    $stripes: append($stripes, $color #{9 * $i}px, comma);
+    $stripes: append($stripes, transparent #{9 * $i + 2}px, comma);
+    $stripes: append($stripes, transparent #{9 * $i + 4}px, comma);
+  }
+
+  /**
+  TLDR: it looks like how the pattern needs to work is:
+  (color start-distance, color end-distance, transparent start-distance, transparent end distance...)
+  */
+  // adding this line makes it impossible to angle, not sure why
+  //   $stripes: append($stripes, transparent 6px, comma);
+
+  & {
+    background: linear-gradient($stripes, transparent);
+  }
+}
+
+footer {
+  position: relative;
+  &::before {
+    content: '';
+    @include rainbow-border;
+    position: absolute;
+    top: -50px;
+    height: 50px;
+    width: 100%;
+  }
+  min-height: 250px;
+}
+
+h1,
+h2 {
+  font-family: base.$title-fontstack;
+  font-weight: normal;
+}
+
+h1 {
+  font-weight: normal;
+  text-align: center;
+}
+
+#hero {
+  margin-top: var(--block-spacing-vertical);
+  $size: 8rem;
+  max-width: 50vw;
+
+  h1 {
+    @include base.neon(base.$white);
+    font-size: $size;
+    font-size: clamp(50%, $size, 10vw);
+    line-height: 1;
+  }
+  h2 {
+    font-size: 2rem;
+    font-size: clamp(50%, 1.75rem, 5vw);
+    font-family: base.$body-fontstack;
+    text-align: center;
+    color: inherit;
+  }
+
+  #hero-links {
+    font-size: 48px;
+    justify-content: space-evenly;
+  }
+}
+
+@for $i from 1 through length(base.$palette-light) {
+  $color: nth(base.$palette-light, $i);
+  header #sections li:nth-child(#{$i}) {
+    &::before {
+      content: "›";
+      color: $color;
+      margin-right: 0.25em;
+    }
+    &:hover {
+      @include base.neon($color);
+    }
+  }
+}
+
+@mixin neon-section($color) {
+  h2 {
+    @include base.neon($color);
+    font-size: 4.5rem;
+    text-align: center;
+  }
+  strong, p::before {
+    color: $color;
+  }
+}
+
+#about {
+  @include neon-section(base.$blue-200);
+  p {
+    position: relative;
+    &::before {
+      content: '//';
+      position: absolute;
+      left: -2em;
+    }
+  }
+}
+
+#projects{
+  @include neon-section(base.$turquoise-200);
+}
+
+#work {
+  @include neon-section(base.$yellow-200);
+}
+
+#skills {
+  @include neon-section(base.$pink-200);
+}
+
+#contact {
+  @include neon-section(base.$purple-200);
+}
+
