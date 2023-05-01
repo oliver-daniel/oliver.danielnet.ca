@@ -21,30 +21,60 @@ body:has(#home) {
 }
 
 @media (min-width: 992px) {
+  $overlay-width: 100px;
+
   main#home {
-    position: relative;
     .rainbow-strip {
       position: absolute;
       top: 0;
       height: 100%;
       width: 6px;
-      background: linear-gradient(
-        transparent,
-        var(--rainbow-strip-palette)
-      );
+      background: linear-gradient(transparent, var(--rainbow-strip-palette));
       background-color: transparent;
 
+      &::after {
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: $overlay-width;
+        background: inherit;
+        filter: blur(10px);
+      }
+
       &:nth-of-type(1) {
-        left: -3%;
+        left: calc(-3% - $overlay-width);
+
+        &::after {
+          mask-image: linear-gradient(
+            90deg,
+            #ffffff 0%,
+            rgba(255, 255, 255, 0.47) 24.48%,
+            rgba(255, 255, 255, 0.28) 46.35%,
+            rgba(255, 255, 255, 0.03) 74.48%,
+            rgba(255, 255, 255, 0) 100%
+          );
+        }
       }
       &:nth-of-type(2) {
-        right: -3%;
+        right: calc(-3% - $overlay-width);
+        &::after {
+          right: 0;
+          mask-image: linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.03) 24.48%,
+            rgba(255, 255, 255, 0.28) 46.35%,
+            rgba(255, 255, 255, 0.47) 74.48%,
+            #ffffff 100%
+          );
+        }
       }
     }
   }
 }
 
 main#home {
+  position: relative;
   h1,
   h2 {
     font-family: base.$title-fontstack;
