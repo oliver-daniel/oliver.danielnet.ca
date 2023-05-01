@@ -3,7 +3,7 @@
 @use "sass:color";
 // fonts
 @import url("https://fonts.cdnfonts.com/css/potra");
-@import url('https://fonts.cdnfonts.com/css/salma-alfa-sans');
+@import url("https://fonts.cdnfonts.com/css/salma-alfa-sans");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
 $title-fontstack: "Potra", sans-serif;
@@ -11,7 +11,7 @@ $title-fontstack: "Potra", sans-serif;
 $body-fontstack: "Salma Alfasans", sans-serif;
 
 // alpha
-$black-800: #0E0E0E;
+$black-800: #0e0e0e;
 $black-600: #1f1f1f;
 $grey-400: #bcbcbc;
 $grey-200: #f0f0f0;
@@ -40,7 +40,13 @@ $purple-800: #2e0f3d;
 
 // ordered palette
 $palette-dark: ($blue-800, $turquoise-800, $yellow-800, $pink-800, $purple-800);
-$palette-light: ($blue-200, $turquoise-200, $yellow-200, $pink-200, $purple-200);
+$palette-light: (
+  $blue-200,
+  $turquoise-200,
+  $yellow-200,
+  $pink-200,
+  $purple-200
+);
 
 @mixin neon($color) {
   color: $color;
@@ -59,7 +65,8 @@ $palette-light: ($blue-200, $turquoise-200, $yellow-200, $pink-200, $purple-200)
 }
 
 :root {
-  a, a:visited {
+  a,
+  a:visited {
     color: unset;
   }
   font-variant-ligatures: none;
@@ -67,4 +74,63 @@ $palette-light: ($blue-200, $turquoise-200, $yellow-200, $pink-200, $purple-200)
 
 html {
   background-color: $black-800;
+}
+
+@mixin rainbow-border {
+  $stripes: (0deg transparent);
+
+  @for $i from 1 through length($palette-dark) {
+    $color: nth($palette-dark, $i);
+
+    $stripes: append($stripes, $color #{9 * $i}px, comma);
+    $stripes: append($stripes, $color #{9 * $i}px, comma);
+    $stripes: append($stripes, transparent #{9 * $i + 2}px, comma);
+    $stripes: append($stripes, transparent #{9 * $i + 4}px, comma);
+  }
+
+  /**
+  TLDR: it looks like how the pattern needs to work is:
+  (color start-distance, color end-distance, transparent start-distance, transparent end distance...)
+  */
+  // adding this line makes it impossible to angle, not sure why
+  //   $stripes: append($stripes, transparent 6px, comma);
+
+  & {
+    background: linear-gradient($stripes, transparent);
+  }
+}
+.socials {
+  justify-content: space-evenly;
+  font-size: 32px;
+}
+footer {
+  position: relative;
+  &::before {
+    content: "";
+    @include rainbow-border;
+    position: absolute;
+    top: -50px;
+    height: 50px;
+    width: 100%;
+  }
+  min-height: 250px;
+
+  > .container {
+    margin: inherit;
+  }
+}
+
+#skip-to-content {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: inherit;
+  box-sizing: border-box;
+
+  transform: translateY(-100%);
+
+  &:focus {
+    transform: translateY(0);
+  }
 }

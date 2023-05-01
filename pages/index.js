@@ -3,18 +3,19 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 
-import config from "../config/next-seo.config";
+import SkipToContent from "@/components/SkipToContent";
+import Socials from "@/components/Socials";
+import RainbowStrip from "@/components/RainbowStrip";
+const links = [
+  ["About", "#about"],
+  ["Projects", "#projects"],
+  ["Work", "#work"],
+  ["Skills", "#skills"],
+  ["Contact", "#contact"],
+];
 
-import { FaAt, FaGithub, FaGitlab, FaLinkedin } from "react-icons/fa";
-
+const sectionIds = links.map(([_, id]) => id.slice(1));
 const Header = () => {
-  const links = [
-    ["About", "#about"],
-    ["Projects", "#projects"],
-    ["Work", "#work"],
-    ["Skills", "#skills"],
-    ["Contact", "#contact"],
-  ];
   return (
     <header>
       <nav>
@@ -33,21 +34,6 @@ const Header = () => {
   );
 };
 
-const socials = [
-  <Link key="email" href="#contact">
-    <FaAt />
-  </Link>,
-  <Link key="github" href={config.github}>
-    <FaGithub />
-  </Link>,
-  <Link key="gitlab" href={config.gitlab}>
-    <FaGitlab />
-  </Link>,
-  <Link key="linkedin" href={config.linkedin}>
-    <FaLinkedin />
-  </Link>,
-];
-
 export default function Home({ sections }) {
   return (
     <>
@@ -57,15 +43,17 @@ export default function Home({ sections }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <SkipToContent href="about" />
       <main id="home" className="container">
+      <RainbowStrip ids={sectionIds} />
         <Header />
         <section id="hero" className="centered">
           <hgroup>
             <h1>Oliver Daniel</h1>
             <h2>Full Stack Developer</h2>
           </hgroup>
-          <div className="row" id="hero-links">
-            {socials}
+          <div className="row socials">
+            <Socials />
           </div>
         </section>
         <section id="about">
@@ -88,7 +76,6 @@ export default function Home({ sections }) {
           <h2>CONTACT</h2>
         </section>
       </main>
-      <footer>nice</footer>
     </>
   );
 }
