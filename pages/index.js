@@ -6,6 +6,7 @@ import Link from "next/link";
 import SkipToContent from "@/components/SkipToContent";
 import Socials from "@/components/Socials";
 import RainbowStrip from "@/components/RainbowStrip";
+import config from "@/config/next-seo.config";
 const links = [
   ["About", "#about"],
   ["Projects", "#projects"],
@@ -19,19 +20,17 @@ sectionIds.unshift("hero");
 
 const Header = () => {
   return (
-    <header>
-      <nav>
-        <ul>
-          <div>LOGO</div>
-        </ul>
-        <ul id="sections">
-          {links.map(([text, href]) => (
-            <li key={text}>
-              <Link href={href}>{text}</Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
+    <header className="navbar hide-sm">
+      <section className="navbar-section">
+        <div>LOGO</div>
+      </section>
+      <section className="navbar-section" id="sections">
+        {links.map(([text, href]) => (
+            <Link key={text} scroll={false} href={href}>
+              {text}
+            </Link>
+        ))}
+      </section>
     </header>
   );
 };
@@ -46,9 +45,9 @@ export default function Home({ sections }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <SkipToContent href="about" />
-      <main id="home" className="container">
+      <main id="home" className="container grid-lg">
+      <Header />
         <RainbowStrip ids={sectionIds} />
-        <Header />
         <section id="hero" className="centered">
           <hgroup>
             <h1>Oliver Daniel</h1>
@@ -60,9 +59,14 @@ export default function Home({ sections }) {
         </section>
         <section id="about">
           <h2>ABOUT</h2>
-          <div className="grid">
-            <div></div>
-            <div dangerouslySetInnerHTML={{ __html: sections.about.content }} />
+          <div className="columns col-gapless">
+            <div className="img-container column col-sm-12 col">
+              <Image {...config.headshot} />
+            </div>
+            <div
+              className="column col-sm-12 col"
+              dangerouslySetInnerHTML={{ __html: sections.about.content }}
+            />
           </div>
         </section>
         <section id="projects">

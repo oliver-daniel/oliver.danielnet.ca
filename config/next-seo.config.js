@@ -3,5 +3,12 @@ const config = {
   github: "https://github.com/oliver-daniel",
   gitlab: "https://gitlab.com/oliver-daniel",
   linkedin: "https://linkedin.com/in/oliverpdaniel",
+  headshot: {
+    // src: '/v1682961685/personal/headshot-colour.jpg',
+    src: `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/v1682961685/personal/headshot-colour.jpg`,
+    alt: "A headshot of Oliver Daniel with colourful lighting.",
+    title: "Courtesy of David J. Fulde",
+    fill: true,
+  },
 };
 export default config;

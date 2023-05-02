@@ -1,0 +1,43 @@
+$title-fontstack: "Potra", sans-serif;
+
+$body-fontstack: "Salma Alfasans", sans-serif;
+
+// alpha
+$black-800: #0e0e0e;
+$black-600: #1f1f1f;
+$grey-400: #bcbcbc;
+$grey-200: #f0f0f0;
+$white: white;
+
+// colors
+$blue-200: #a2b2db;
+$blue-400: #2e4082;
+$blue-800: #0f1837;
+
+$turquoise-200: #a2dbc3;
+$turquoise-400: #297052;
+$turquoise-800: #0d3c28;
+
+$yellow-200: #dbcea2;
+$yellow-400: #685625;
+$yellow-800: #3a2e0e;
+
+$pink-200: #dba2ba;
+$pink-400: #763253;
+$pink-800: #300f1f;
+
+$purple-200: #bba2db;
+$purple-400: #592b70;
+$purple-800: #2e0f3d;
+
+// overriding spectre colours I don't want
+
+// ordered palette
+$palette-dark: ($blue-800, $turquoise-800, $yellow-800, $pink-800, $purple-800);
+$palette-light: (
+  $blue-200,
+  $turquoise-200,
+  $yellow-200,
+  $pink-200,
+  $purple-200
+);

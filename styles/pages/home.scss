@@ -1,8 +1,9 @@
-@use "../base";
+@use "../variables" as *;
+@use '../base';
 
 @mixin pattern-background {
   background: url("../../public/svg/bgtile.svg") repeat left top;
-  background-color: base.$black-800;
+  background-color: $black-800;
 }
 
 body:has(#home) {
@@ -16,12 +17,12 @@ body:has(#home) {
 }
 
 :root {
-  --rainbow-strip-palette: #{base.$blue-200}, #{base.$turquoise-200},
-    #{base.$yellow-200}, #{base.$pink-200}, #{base.$purple-200};
+  --rainbow-strip-palette: #{$blue-200}, #{$turquoise-200},
+    #{$yellow-200}, #{$pink-200}, #{$purple-200};
 }
 
 @media (min-width: 992px) {
-  $overlay-width: 100px;
+  $overlay-width: 80px;
 
   main#home {
     .rainbow-strip {
@@ -31,6 +32,8 @@ body:has(#home) {
       width: 6px;
       background: linear-gradient(transparent, var(--rainbow-strip-palette));
       background-color: transparent;
+      // TODO: technically, the strip and the glow use
+      // DIFFERENT coloursets. This is a placeholder.
 
       &::after {
         content: "";
@@ -38,7 +41,6 @@ body:has(#home) {
         height: 100%;
         width: $overlay-width;
         background: inherit;
-        filter: blur(10px);
       }
 
       &:nth-of-type(1) {
@@ -77,7 +79,7 @@ main#home {
   position: relative;
   h1,
   h2 {
-    font-family: base.$title-fontstack;
+    font-family: $title-fontstack;
     font-weight: normal;
   }
 
@@ -86,13 +88,17 @@ main#home {
     text-align: center;
   }
 
+  p a {
+    text-decoration: underline;
+  }
+
   #hero {
-    margin-top: var(--block-spacing-vertical);
-    $size: 8rem;
+    margin-top: 4rem;
+    $size: 6rem;
     max-width: 50vw;
 
     h1 {
-      @include base.neon(base.$white);
+      @include base.neon($white);
       font-size: $size;
       font-size: clamp(50%, $size, 10vw);
       line-height: 1;
@@ -100,19 +106,24 @@ main#home {
     h2 {
       font-size: 2rem;
       font-size: clamp(50%, 1.75rem, 5vw);
-      font-family: base.$body-fontstack;
+      font-family: $body-fontstack;
       text-align: center;
       color: inherit;
     }
 
     .socials {
-      font-size: 48px;
+      a {
+        transition: filter 0.17s ease-out;
+      }
+      a:hover {
+        @include base.neon-drop($white);
+      }
     }
   }
 
-  @for $i from 1 through length(base.$palette-light) {
-    $color: nth(base.$palette-light, $i);
-    header #sections li:nth-child(#{$i}) {
+  @for $i from 1 through length($palette-light) {
+    $color: nth($palette-light, $i);
+    header #sections a:nth-child(#{$i}) {
       &::before {
         content: "›";
         color: $color;
@@ -137,7 +148,20 @@ main#home {
   }
 
   #about {
-    @include neon-section(base.$blue-200);
+    @include neon-section($blue-200);
+    .img-container {
+      position: relative;
+      min-height: 316px;
+      img {
+        object-fit: contain;
+        width: auto !important;
+        border-radius: 10px;
+        margin: 0 auto;
+        position: relative;
+        // TODO proper border
+        box-shadow: 10px 5px 4px $blue-400;
+      }
+    }
     p {
       position: relative;
       &::before {
@@ -148,19 +172,31 @@ main#home {
     }
   }
 
+  header {
+    font-size: 1.2rem;
+    #sections {
+      gap: 1rem;
+    }
+    padding: 1rem 0;
+  }
+
+  >section + section {
+    margin-top: 8.5rem;
+  }
+
   #projects {
-    @include neon-section(base.$turquoise-200);
+    @include neon-section($turquoise-200);
   }
 
   #work {
-    @include neon-section(base.$yellow-200);
+    @include neon-section($yellow-200);
   }
 
   #skills {
-    @include neon-section(base.$pink-200);
+    @include neon-section($pink-200);
   }
 
   #contact {
-    @include neon-section(base.$purple-200);
+    @include neon-section($purple-200);
   }
 }

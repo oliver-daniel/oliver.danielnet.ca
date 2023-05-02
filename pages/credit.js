@@ -19,7 +19,6 @@ export default function CreditPage({ content }) {
 
 export async function getStaticProps() {
   const { content } = await ContentService.getPageData("credit");
-  console.log(content);
   return {
     props: {
       content,

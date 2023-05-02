@@ -4,7 +4,7 @@ import config from "../config/next-seo.config";
 import { FaAt, FaGithub, FaGitlab, FaLinkedin } from "react-icons/fa";
 
 const Socials = () => [
-  <Link key="email" href="#contact">
+  <Link scroll={false} key="email" href="/#contact">
     <FaAt />
   </Link>,
   <Link key="github" href={config.github}>
