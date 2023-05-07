@@ -87,10 +87,6 @@ main#home {
     margin-bottom: unset;
   }
 
-  hgroup {
-    margin-bottom: 5rem;
-  }
-
   p a {
     text-decoration: underline;
   }
@@ -113,6 +109,9 @@ main#home {
       text-align: center;
       color: inherit;
     }
+    .socials {
+      margin: 2rem auto;
+    }
   }
 
   @for $i from 1 through length($palette-light) {
@@ -128,15 +127,15 @@ main#home {
         @include base.neon($color);
       }
     }
-    #hero .socials a:nth-child(#{$i - 1}) {
-      &:hover,
-      &:focus {
-        svg {
-          fill: $color;
-          @include base.neon-drop($color);
-        }
-      }
-    }
+    // #hero .socials a:nth-child(#{$i - 1}) {
+    //   &:hover,
+    //   &:focus {
+    //     svg {
+    //       fill: $color;
+    //       @include base.neon-drop($color);
+    //     }
+    //   }
+    // }
   }
 
   @mixin neon-section($color) {
@@ -192,22 +191,68 @@ main#home {
   }
 
   > section + section {
-    margin-top: 8.5rem;
+    margin-top: 7rem;
   }
 
   #projects {
     @include neon-section($turquoise-200);
-    .tabs > ul {
+    nav.tab {
       border: none;
-      .tab-item.active {
-        @include base.neon($turquoise-200);
+      justify-content: space-evenly;
+      margin-bottom: 2rem;
+
+      button.tab-item {
+        background-color: unset;
+        color: unset;
+        border: unset;
+        flex: 0 0 auto;
+        padding: 0.25rem 0.5rem;
+        font-size: 1.1rem;
+
+        &:hover {
+          cursor: pointer;
+        }
+        &.active {
+          color: $turquoise-200;
+          border-top: 4px solid $turquoise-200;
+          border-bottom: 4px solid $turquoise-200;
+          font-weight: 800;
+        }
       }
     }
     .portfolio-menu {
       .menu-item {
+        padding: 0 10%;
+
         display: none;
+
         &.active {
-          display: initial;
+          display: block;
+        }
+
+        h4 {
+          font-size: 1.1rem;
+        }
+
+        .description {
+          margin: 1rem auto;
+
+          p {
+            position: relative;
+            margin: auto 2em;
+            &::before {
+              content: "//";
+              position: absolute;
+              left: -2em;
+            }
+          }
+        }
+
+        .skill-icons {
+          color: $turquoise-200;
+          font-size: 36px;
+          display: flex;
+          gap: 0.5rem;
         }
       }
     }

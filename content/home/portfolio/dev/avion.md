@@ -1,9 +1,9 @@
 ---
-index: 1
-name: Nuance Communications
-short_name: Nuance
-role: Software Developer Intern
-term: May – September 2020, '21, '22
+index: 3
+name: Avion Cargo Polytechnique
+short_name: Avion Cargo
+role: Full-stack Developer (contract)
+term: May – September 2020
 skills:
   - django
 ---

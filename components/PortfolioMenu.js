@@ -2,22 +2,41 @@ import { Fragment, useState } from "react";
 import cls from "classnames";
 import { convertIcon } from "@/lib/SkillIcons";
 
+// TODO: hidden-until-found beforematch listener
+// https://developer.chrome.com/articles/hidden-until-found/
+
 const MenuItem = ({ data, content, active }) => {
   const skillIcons = data.skills.map(convertIcon);
   return (
-    <div className={cls("menu-item", { active })}>
-        <hgroup>
-            <h3 dangerouslySetInnerHTML={{
-                __html: data.name
-            }}/>
-            <h4>{data.role}, {data.term}</h4>
-        </hgroup>
-        {<div dangerouslySetInnerHTML={{
-            __html: content
-        }}/> }
-      <div className="skill-icons">
+    <div className={cls("menu-item", { active })} role="tabpanel">
+      <hgroup>
+        <h3
+          dangerouslySetInnerHTML={{
+            __html: data.name,
+          }}
+        />
+        <h4>
+          {data.role}, {data.term}
+        </h4>
+      </hgroup>
+      {
+        <div
+          className="description"
+          dangerouslySetInnerHTML={{
+            __html: content,
+          }}
+        />
+      }
+      <div className="skill-icons row">
         {skillIcons.map(({ icon: Icon, name }) => (
-          <Icon key={name} />
+          <div
+            tabIndex={0}
+            key={name}
+            className="tooltip tooltip-bottom"
+            data-tooltip={name}
+          >
+            <Icon />
+          </div>
         ))}
       </div>
     </div>
@@ -34,22 +53,22 @@ const PortfolioMenu = ({ items }) => {
 
   return (
     <div className="portfolio-menu">
-      <div className="tabs">
-        <ul className="tab tab-block">
-          {items.map(({ id, data: { short_name } }, i) => (
-            <li
-              key={id}
-              className={cls("tab-item", { active: index === i })}
-              onClick={handleTabClick(i)}
-            >
-              {short_name}
-            </li>
-          ))}
-        </ul>
-        {items.map((props, i) => (
-          <MenuItem key={props.id} active={i === index} {...props} />
+      <nav className="tab tab-block" role="tablist">
+        {items.map(({ id, data: { short_name } }, i) => (
+          <button
+            role="tab"
+            aria-selected={index === i}
+            key={id}
+            className={cls("tab-item", { active: index === i })}
+            onClick={handleTabClick(i)}
+          >
+            {short_name}
+          </button>
         ))}
-      </div>
+      </nav>
+      {items.map((props, i) => (
+        <MenuItem key={props.id} active={i === index} {...props} />
+      ))}
     </div>
   );
 };

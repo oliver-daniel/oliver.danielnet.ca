@@ -1,10 +1,10 @@
 ---
-index: 1
-name: Nuance Communications
-short_name: Nuance
+index: 2
+name: WFHomie
+short_name: WFHomie
 role: Software Developer Intern
-term: May – September 2020, '21, '22
+term: January – April 2021
 skills:
-  - django
+  - node
 ---
 One sentence description of the project, Oliver’s role in creating it, and the main highlights regarding his contribution.

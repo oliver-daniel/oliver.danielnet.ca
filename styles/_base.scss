@@ -73,6 +73,11 @@ html {
   justify-content: space-evenly;
   font-size: 32px;
 }
+
+hgroup > * {
+  margin-bottom: unset;
+}
+
 footer {
   position: relative;
   &::before {
