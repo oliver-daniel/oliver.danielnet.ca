@@ -1,5 +1,5 @@
 @use "../variables" as *;
-@use '../base';
+@use "../base";
 
 @mixin pattern-background {
   background: url("../../public/svg/bgtile.svg") repeat left top;
@@ -17,59 +17,57 @@ body:has(#home) {
 }
 
 :root {
-  --rainbow-strip-palette: #{$blue-200}, #{$turquoise-200},
-    #{$yellow-200}, #{$pink-200}, #{$purple-200};
+  --rainbow-strip-palette: #{$blue-200}, #{$turquoise-200}, #{$yellow-200},
+    #{$pink-200}, #{$purple-200};
 }
 
-@media (min-width: 992px) {
-  $overlay-width: 80px;
+$overlay-width: 80px;
 
-  main#home {
-    .rainbow-strip {
+main#home {
+  .rainbow-strip {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 6px;
+    background: linear-gradient(transparent, var(--rainbow-strip-palette));
+    background-color: transparent;
+    // TODO: technically, the strip and the glow use
+    // DIFFERENT coloursets. This is a placeholder.
+
+    &::after {
+      content: "";
       position: absolute;
-      top: 0;
       height: 100%;
-      width: 6px;
-      background: linear-gradient(transparent, var(--rainbow-strip-palette));
-      background-color: transparent;
-      // TODO: technically, the strip and the glow use
-      // DIFFERENT coloursets. This is a placeholder.
+      width: $overlay-width;
+      background: inherit;
+    }
+
+    &:nth-of-type(1) {
+      left: calc(-3% - $overlay-width);
 
       &::after {
-        content: "";
-        position: absolute;
-        height: 100%;
-        width: $overlay-width;
-        background: inherit;
+        mask-image: linear-gradient(
+          90deg,
+          #ffffff 0%,
+          rgba(255, 255, 255, 0.47) 24.48%,
+          rgba(255, 255, 255, 0.28) 46.35%,
+          rgba(255, 255, 255, 0.03) 74.48%,
+          rgba(255, 255, 255, 0) 100%
+        );
       }
-
-      &:nth-of-type(1) {
-        left: calc(-3% - $overlay-width);
-
-        &::after {
-          mask-image: linear-gradient(
-            90deg,
-            #ffffff 0%,
-            rgba(255, 255, 255, 0.47) 24.48%,
-            rgba(255, 255, 255, 0.28) 46.35%,
-            rgba(255, 255, 255, 0.03) 74.48%,
-            rgba(255, 255, 255, 0) 100%
-          );
-        }
-      }
-      &:nth-of-type(2) {
-        right: calc(-3% - $overlay-width);
-        &::after {
-          right: 0;
-          mask-image: linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0) 0%,
-            rgba(255, 255, 255, 0.03) 24.48%,
-            rgba(255, 255, 255, 0.28) 46.35%,
-            rgba(255, 255, 255, 0.47) 74.48%,
-            #ffffff 100%
-          );
-        }
+    }
+    &:nth-of-type(2) {
+      right: calc(-3% - $overlay-width);
+      &::after {
+        right: 0;
+        mask-image: linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.03) 24.48%,
+          rgba(255, 255, 255, 0.28) 46.35%,
+          rgba(255, 255, 255, 0.47) 74.48%,
+          #ffffff 100%
+        );
       }
     }
   }
@@ -86,6 +84,11 @@ main#home {
   h1 {
     font-weight: normal;
     text-align: center;
+    margin-bottom: unset;
+  }
+
+  hgroup {
+    margin-bottom: 5rem;
   }
 
   p a {
@@ -110,15 +113,6 @@ main#home {
       text-align: center;
       color: inherit;
     }
-
-    .socials {
-      a {
-        transition: filter 0.17s ease-out;
-      }
-      a:hover {
-        @include base.neon-drop($white);
-      }
-    }
   }
 
   @for $i from 1 through length($palette-light) {
@@ -129,8 +123,18 @@ main#home {
         color: $color;
         margin-right: 0.25em;
       }
-      &:hover {
+      &:hover,
+      &:focus {
         @include base.neon($color);
+      }
+    }
+    #hero .socials a:nth-child(#{$i - 1}) {
+      &:hover,
+      &:focus {
+        svg {
+          fill: $color;
+          @include base.neon-drop($color);
+        }
       }
     }
   }
@@ -170,6 +174,13 @@ main#home {
         left: -2em;
       }
     }
+    @media screen and (min-width: 970px) {
+      h2 {
+        position: absolute;
+        z-index: 1;
+        transform: rotate(-90deg) translate(-30%, -25%);
+      }
+    }
   }
 
   header {
@@ -180,12 +191,26 @@ main#home {
     padding: 1rem 0;
   }
 
-  >section + section {
+  > section + section {
     margin-top: 8.5rem;
   }
 
   #projects {
     @include neon-section($turquoise-200);
+    .tabs > ul {
+      border: none;
+      .tab-item.active {
+        @include base.neon($turquoise-200);
+      }
+    }
+    .portfolio-menu {
+      .menu-item {
+        display: none;
+        &.active {
+          display: initial;
+        }
+      }
+    }
   }
 
   #work {

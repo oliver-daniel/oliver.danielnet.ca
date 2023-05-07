@@ -7,6 +7,8 @@ import SkipToContent from "@/components/SkipToContent";
 import Socials from "@/components/Socials";
 import RainbowStrip from "@/components/RainbowStrip";
 import config from "@/config/next-seo.config";
+import PortfolioMenu from "@/components/PortfolioMenu";
+
 const links = [
   ["About", "#about"],
   ["Projects", "#projects"],
@@ -26,16 +28,16 @@ const Header = () => {
       </section>
       <section className="navbar-section" id="sections">
         {links.map(([text, href]) => (
-            <Link key={text} scroll={false} href={href}>
-              {text}
-            </Link>
+          <Link key={text} scroll={false} href={href}>
+            {text}
+          </Link>
         ))}
       </section>
     </header>
   );
 };
 
-export default function Home({ sections }) {
+export default function Home({ sections, devData }) {
   return (
     <>
       <Head>
@@ -46,7 +48,7 @@ export default function Home({ sections }) {
       </Head>
       <SkipToContent href="about" />
       <main id="home" className="container grid-lg">
-      <Header />
+        <Header />
         <RainbowStrip ids={sectionIds} />
         <section id="hero" className="centered">
           <hgroup>
@@ -62,6 +64,7 @@ export default function Home({ sections }) {
           <div className="columns col-gapless">
             <div className="img-container column col-sm-12 col">
               <Image {...config.headshot} />
+              <div />
             </div>
             <div
               className="column col-sm-12 col"
@@ -71,33 +74,7 @@ export default function Home({ sections }) {
         </section>
         <section id="projects">
           <h2>PROJECTS</h2>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea non id
-          harum provident ad repudiandae quia! Soluta quibusdam facere,
-          blanditiis quas quia ad a nesciunt minima! Aliquid ad adipisci nostrum
-          quod eum rem necessitatibus optio consectetur libero deserunt minima
-          quisquam, iure et quis ducimus ipsam mollitia quae facere vitae!
-          Facilis suscipit excepturi neque magni libero illo reiciendis
-          obcaecati soluta nam perferendis voluptatem nihil molestiae ducimus et
-          eveniet vitae, consequatur, ex pariatur doloribus repellat laudantium
-          quaerat earum? Harum saepe aspernatur, molestias consectetur optio
-          aliquam rem dolore vitae cupiditate. Quia architecto dignissimos atque
-          labore dolorum optio iusto doloremque ullam libero omnis vel obcaecati
-          sed nihil vero laboriosam, fugit magni accusamus dolor animi odit.
-          Inventore officiis at ullam fugiat exercitationem, quae neque commodi!
-          Magnam, accusantium adipisci quibusdam a laborum eum enim, perferendis
-          alias minus nesciunt illum repudiandae iure consequatur perspiciatis
-          nobis fuga. Obcaecati dolorum id suscipit perspiciatis amet quos
-          cumque culpa. Magnam architecto est quod dolorum aperiam ea ducimus
-          optio obcaecati? Magni sequi beatae in, laudantium maxime distinctio
-          omnis odio illo error quae perferendis id alias, assumenda dolore
-          nesciunt mollitia iure, aliquam magnam sunt nulla odit quaerat. Fugit
-          ipsa ut tempore! Temporibus nam harum eius repudiandae, earum ducimus
-          ipsam magnam nemo veniam, fugit magni dicta porro voluptatibus et
-          voluptate nesciunt? Harum, facilis ipsam quam quibusdam vel recusandae
-          iure eos autem laboriosam tempora. Sit expedita provident, deleniti
-          autem quia ipsam magnam, obcaecati perferendis praesentium voluptatum
-          tenetur et distinctio at quae, aliquid numquam aut ex non. Sequi,
-          ratione omnis distinctio error dolorum facilis commodi explicabo.
+          <PortfolioMenu items={devData} />
         </section>
         <section id="work">
           <h2>WORK HISTORY</h2>
@@ -203,9 +180,14 @@ export async function getStaticProps() {
     about: ContentService.getPageData("home/about"),
   };
 
+  const devData = ContentService.readDir("home/portfolio/dev").sort(
+    (a, b) => a.data.index - b.data.index
+  );
+
   return {
     props: {
       sections,
+      devData,
     },
   };
 }
