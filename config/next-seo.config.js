@@ -5,7 +5,7 @@ const config = {
   linkedin: "https://linkedin.com/in/oliverpdaniel",
   headshot: {
     // src: '/v1682961685/personal/headshot-colour.jpg',
-    src: `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/v1684179384/personal/DSCF2359_ikmzzt.jpg`,
+    src: `/img/headshot_cropped.jpg`,
     alt: "A headshot of Oliver Daniel with colourful lighting.",
     title: "Courtesy of David J. Fulde",
     fill: true,
