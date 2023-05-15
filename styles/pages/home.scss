@@ -6,6 +6,28 @@
   background-color: $black-800;
 }
 
+@mixin neon-section($color) {
+  h2 {
+    @include base.neon($color);
+    font-size: 4.5rem;
+    text-align: center;
+  }
+  strong,
+  p::before,
+  .cta {
+    color: $color;
+  }
+
+  .cta {
+    font-size: 1.25rem;
+    float: right;
+    &::before {
+      content: "›";
+      margin-right: 0.25em;
+    }
+  }
+}
+
 body:has(#home) {
   @include pattern-background;
 }
@@ -17,11 +39,38 @@ body:has(#home) {
 }
 
 :root {
-  --rainbow-strip-palette: #{$blue-200}, #{$turquoise-200}, #{$yellow-200},
+  --rainbow-light-palette: #{$blue-200}, #{$turquoise-200}, #{$yellow-200},
     #{$pink-200}, #{$purple-200};
+  --rainbow-dark-palette: #{$blue-400}, #{$turquoise-400}, #{$yellow-400},
+    #{$pink-400}, #{$purple-400};
 }
 
 $overlay-width: 80px;
+
+header {
+  font-size: 1.2rem;
+  #sections {
+    gap: 2rem;
+    @for $i from 1 through length($palette-light) {
+      $color: nth($palette-light, $i);
+      a:nth-child(#{$i}) {
+        &::before {
+          content: "›";
+          color: $color;
+          margin-right: 0.25em;
+        }
+        &:hover,
+        &:focus {
+          @include base.neon($color);
+          &::before {
+            text-decoration: none;
+          }
+        }
+      }
+    }
+    padding: 1rem 0;
+  }
+}
 
 main#home {
   .rainbow-strip {
@@ -29,7 +78,7 @@ main#home {
     top: 0;
     height: 100%;
     width: 6px;
-    background: linear-gradient(transparent, var(--rainbow-strip-palette));
+    background: linear-gradient(transparent, var(--rainbow-light-palette));
     background-color: transparent;
     // TODO: technically, the strip and the glow use
     // DIFFERENT coloursets. This is a placeholder.
@@ -40,6 +89,7 @@ main#home {
       height: 100%;
       width: $overlay-width;
       background: inherit;
+      filter: brightness(0.5) saturate(2.5);
     }
 
     &:nth-of-type(1) {
@@ -71,9 +121,7 @@ main#home {
       }
     }
   }
-}
 
-main#home {
   position: relative;
   h1,
   h2 {
@@ -114,44 +162,26 @@ main#home {
     }
   }
 
-  @for $i from 1 through length($palette-light) {
-    $color: nth($palette-light, $i);
-    header #sections a:nth-child(#{$i}) {
-      &::before {
-        content: "›";
-        color: $color;
-        margin-right: 0.25em;
-      }
-      &:hover,
-      &:focus {
-        @include base.neon($color);
-      }
-    }
-    // #hero .socials a:nth-child(#{$i - 1}) {
-    //   &:hover,
-    //   &:focus {
-    //     svg {
-    //       fill: $color;
-    //       @include base.neon-drop($color);
-    //     }
-    //   }
-    // }
-  }
-
-  @mixin neon-section($color) {
-    h2 {
-      @include base.neon($color);
-      font-size: 4.5rem;
-      text-align: center;
-    }
-    strong,
-    p::before {
-      color: $color;
-    }
+  // #hero .socials a:nth-child(#{$i - 1}) {
+  //   &:hover,
+  //   &:focus {
+  //     svg {
+  //       fill: $color;
+  //       @include base.neon-drop($color);
+  //     }
+  //   }
+  // }
+  > section + section {
+    margin-top: 7rem;
   }
 
   #about {
     @include neon-section($blue-200);
+
+    > .columns {
+      align-items: center;
+    }
+
     .img-container {
       position: relative;
       min-height: 316px;
@@ -162,7 +192,11 @@ main#home {
         margin: 0 auto;
         position: relative;
         // TODO proper border
-        box-shadow: 10px 5px 4px $blue-400;
+        $shadow-offset: 6px;
+        box-shadow: $shadow-offset $shadow-offset 0 0 $black-800,
+          $shadow-offset $shadow-offset 0 3px $blue-400;
+        // outline: 4px solid $blue-400;
+        // outline-offset: 4px;
       }
     }
     p {
@@ -182,20 +216,19 @@ main#home {
     }
   }
 
-  header {
-    font-size: 1.2rem;
-    #sections {
-      gap: 1rem;
-    }
-    padding: 1rem 0;
-  }
-
-  > section + section {
-    margin-top: 7rem;
-  }
-
   #projects {
     @include neon-section($turquoise-200);
+    .portfolio-menu {
+      .skill-icons {
+        color: $turquoise-200;
+      }
+      button.tab-item.active {
+        color: $turquoise-200;
+        border-color: $turquoise-200;
+      }
+    }
+  }
+  .portfolio-menu {
     nav.tab {
       border: none;
       justify-content: space-evenly;
@@ -213,53 +246,58 @@ main#home {
           cursor: pointer;
         }
         &.active {
-          color: $turquoise-200;
-          border-top: 4px solid $turquoise-200;
-          border-bottom: 4px solid $turquoise-200;
+          border-top: 4px solid;
+          border-bottom: 4px solid;
           font-weight: 800;
         }
       }
     }
-    .portfolio-menu {
-      .menu-item {
-        padding: 0 10%;
+    .menu-item {
+      padding: 0 10%;
 
-        display: none;
+      display: none;
 
-        &.active {
-          display: block;
-        }
+      &.active {
+        display: block;
+      }
 
-        h4 {
-          font-size: 1.1rem;
-        }
+      h4 {
+        font-size: 1.1rem;
+      }
 
-        .description {
-          margin: 1rem auto;
+      .description {
+        margin: 1rem auto;
 
-          p {
-            position: relative;
-            margin: auto 2em;
-            &::before {
-              content: "//";
-              position: absolute;
-              left: -2em;
-            }
+        p {
+          position: relative;
+          margin: auto 2em;
+          &::before {
+            content: "//";
+            position: absolute;
+            left: -2em;
           }
         }
+      }
 
-        .skill-icons {
-          color: $turquoise-200;
-          font-size: 36px;
-          display: flex;
-          gap: 0.5rem;
-        }
+      .skill-icons {
+        font-size: 36px;
+        display: flex;
+        gap: 0.5rem;
       }
     }
   }
 
-  #work {
+  #design {
     @include neon-section($yellow-200);
+    .portfolio-menu {
+      .skill-icons {
+        color: $yellow-200;
+      }
+      button.tab-item.active {
+        color: $yellow-200;
+        border-color: $yellow-200;
+      }
+    }
   }
 
   #skills {
@@ -268,5 +306,26 @@ main#home {
 
   #contact {
     @include neon-section($purple-200);
+
+    #contact-form {
+      padding: 10%;
+      padding-top: 0;
+    }
+
+    color: $purple-200;
+
+    .form-group {
+      > * {
+        width: 100%;
+        background-color: $black-800;
+        border: 2px solid $purple-200;
+        border-radius: 10px;
+        padding: 0.5rem;
+        color: $grey-200;
+        &::placeholder {
+          color: $purple-200;
+        }
+      }
+    }
   }
 }

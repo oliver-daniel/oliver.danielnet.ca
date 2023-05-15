@@ -16,17 +16,17 @@ export default function RainbowStrip({ ids }) {
 
     const els = document.querySelectorAll(".rainbow-strip");
 
-    const palette = getComputedStyle(els[0])
-      .getPropertyValue("--rainbow-strip-palette")
+    const lightPalette = getComputedStyle(els[0])
+      .getPropertyValue("--rainbow-light-palette")
       .trim()
       .split(", ");
 
-    palette.unshift("transparent");
+    lightPalette.unshift("transparent");
 
     const breakpoints = dimensions
       .map(
         ([_top, _bottom, percentage], i) =>
-          `${palette[i]} ${percentage.toFixed(1)}%`
+          `${lightPalette[i]} ${percentage.toFixed(1)}%`
       )
       .join(", ");
 
@@ -37,16 +37,10 @@ export default function RainbowStrip({ ids }) {
     });
   }, [ids, setStyle]);
 
-  return Array(2).fill(<div className="rainbow-strip" style={style}></div>);
-
-  //   return (
-  //     // <>
-  //     //   <div className="rainbow-strip" style={style}>
-  //     //     <div className="glow-overlay" style={style}></div>
-  //     //   </div>
-  //     //   <div className="rainbow-strip" style={style}>
-  //     //     <div className="glow-overlay" style={style}></div>
-  //     //   </div>
-  //     // </>
-  //   );
+  return (
+    <>
+      <div className="rainbow-strip" style={style}></div>
+      <div className="rainbow-strip" style={style}></div>
+    </>
+  );
 }

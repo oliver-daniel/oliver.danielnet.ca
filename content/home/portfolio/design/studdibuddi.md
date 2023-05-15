@@ -1,10 +1,10 @@
 ---
-index: 3
-name: Avion Cargo Polytechnique
-short_name: Avion Cargo
-role: Full-stack Developer
-term: May – September 2020
+index: 1
+name: Studdi Buddi
+short_name: Studdi Buddi
+role: Software Developer Intern
+term: January – April 2021
 skills:
-  - django
+  - node
 ---
 One sentence description of the project, Oliver’s role in creating it, and the main highlights regarding his contribution.

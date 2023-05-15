@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function SkipToContent({ href    }) {
+export default function SkipToContent({ href }) {
   const [handler, setHandler] = useState();
   useEffect(() => {
     const target = href
@@ -20,7 +20,7 @@ export default function SkipToContent({ href    }) {
   }, []);
 
   return (
-    <button id="skip-to-content" onClick={handler} className="secondary">
+    <button id="skip-to-content" onClick={handler} role="navigation">
       Skip to content
     </button>
   );

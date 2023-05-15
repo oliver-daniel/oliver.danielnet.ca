@@ -7,6 +7,7 @@ term: September 2022 – March 2023
 skills:
   - node
   - react
+  - nextjs
   - html
   - css
 ---

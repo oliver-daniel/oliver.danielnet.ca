@@ -12,7 +12,7 @@ import PortfolioMenu from "@/components/PortfolioMenu";
 const links = [
   ["About", "#about"],
   ["Projects", "#projects"],
-  ["Work", "#work"],
+  ["Design", "#design"],
   ["Skills", "#skills"],
   ["Contact", "#contact"],
 ];
@@ -22,7 +22,7 @@ sectionIds.unshift("hero");
 
 const Header = () => {
   return (
-    <header className="navbar hide-sm">
+    <header className="navbar hide-sm container grid-lg" role="banner">
       <section className="navbar-section">
         <div>LOGO</div>
       </section>
@@ -37,7 +37,7 @@ const Header = () => {
   );
 };
 
-export default function Home({ sections, devData }) {
+export default function Home({ sections, portfolio }) {
   return (
     <>
       <Head>
@@ -47,8 +47,8 @@ export default function Home({ sections, devData }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <SkipToContent href="about" />
-      <main id="home" className="container grid-lg">
-        <Header />
+      <Header />
+      <main id="home" className="container grid-lg" role="main">
         <RainbowStrip ids={sectionIds} />
         <section id="hero" className="centered">
           <hgroup>
@@ -71,104 +71,47 @@ export default function Home({ sections, devData }) {
               dangerouslySetInnerHTML={{ __html: sections.about.content }}
             />
           </div>
+          {/* TODO */}
+          <Link href='#' className="cta hide-sm">Download Resume</Link>
         </section>
         <section id="projects">
           <h2>PROJECTS</h2>
-          <PortfolioMenu items={devData} />
+          <PortfolioMenu items={portfolio.dev} />
+          {/* TODO */}
+          <Link href='#' className="cta hide-sm">Full Portfolio</Link>
         </section>
-        <section id="work">
-          <h2>WORK HISTORY</h2>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae
-          odit alias, atque facilis voluptatibus illo doloribus exercitationem
-          magni sint! Tenetur deleniti aspernatur omnis sed quas molestiae atque
-          tempore accusamus recusandae fuga, ipsa adipisci eligendi doloribus.
-          Numquam enim omnis fugiat cumque quaerat quidem aliquam tenetur,
-          aperiam itaque odit! Esse voluptas velit ea saepe at quae accusamus
-          assumenda officia delectus expedita iusto, eligendi atque eveniet
-          natus, recusandae deleniti neque nisi tenetur accusantium a soluta
-          officiis beatae. Esse ducimus ad ipsam eum autem dolor nobis qui
-          veritatis sunt nisi facilis, dolore minima? Ex vero voluptatem et
-          possimus impedit cum beatae quis voluptatibus soluta dolor numquam
-          minima quibusdam, repellendus temporibus error consequuntur. Minima,
-          sunt. Vitae, nisi! Nostrum explicabo, dolore atque beatae accusantium
-          magni maiores! Deserunt aut facilis labore libero. Perspiciatis quis
-          vel totam unde officia iure molestiae sint. Eum repellat quod dolorem
-          placeat eos ullam eligendi quidem quisquam deserunt nobis accusantium,
-          culpa ipsa, ipsam harum sapiente dolore corrupti iure numquam ea nam
-          aperiam expedita doloribus. Quo, voluptates assumenda non similique
-          totam veritatis laborum? Aperiam tempora facere, obcaecati similique
-          quis sunt rerum quaerat ipsa. Repellat porro facilis tenetur
-          doloremque quos totam numquam modi, assumenda, similique omnis
-          obcaecati quas rerum eaque ratione et molestiae tempore non inventore
-          excepturi. Totam eos libero esse ipsam, cumque consequatur non error
-          sapiente. Fuga quis eum sed dolorum assumenda nam odio exercitationem
-          obcaecati, optio tenetur, id nesciunt deserunt iste est iusto impedit
-          odit distinctio blanditiis recusandae veritatis! Repudiandae beatae
-          asperiores corrupti eligendi a, ex rerum nemo, veniam et, eaque
-          maiores minima.
+        <section id="design">
+          <h2>DESIGN</h2>
+          <PortfolioMenu items={portfolio.design}/>
+          {/* TODO */}
+          <Link href='#' className="cta hide-sm">Full Portfolio</Link>
         </section>
         <section id="skills">
           <h2>SKILLS</h2>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur
-          aspernatur officia at tenetur deleniti amet? Porro nisi ratione
-          aspernatur tempora placeat aut atque ipsa, debitis impedit! Alias, in
-          enim, rerum ipsa officiis, aliquid excepturi laboriosam doloremque
-          optio nam quibusdam adipisci nihil aperiam delectus? Recusandae error
-          possimus voluptatibus ullam perspiciatis, quae totam incidunt et ab
-          expedita magni vero animi optio odit quos debitis, eum ea obcaecati
-          magnam! Ducimus debitis est exercitationem officiis dignissimos
-          laborum placeat dolore amet magnam voluptatum. Sunt voluptatum vitae
-          consectetur, officiis, cum ipsum magnam minima, quae corporis
-          assumenda sapiente sequi tempore atque! Minus quasi dolore cumque
-          fugit, consectetur ipsa vero ea. Labore pariatur ab libero et cumque
-          velit illo in, quae, totam tempora eveniet. Veniam, sed mollitia sit,
-          laborum hic ratione fugit soluta incidunt, qui maxime nulla? Delectus
-          obcaecati similique dignissimos consequatur atque corporis impedit at
-          ab, quam quo eaque maiores id libero corrupti ipsum doloremque animi
-          ullam molestiae adipisci voluptas! Totam, a quidem aperiam ad vero
-          omnis doloremque molestiae cupiditate eos itaque? Est reiciendis,
-          consequuntur libero doloremque laborum incidunt aspernatur inventore
-          quisquam consequatur facere error? Sunt veniam, praesentium, ipsam
-          repudiandae officia nesciunt quos in, ducimus voluptas architecto
-          possimus? Labore, voluptatem? Laborum aut odio vel consectetur
-          corrupti, harum ex. Id quam reprehenderit fuga nobis, ipsa dolore
-          possimus rem necessitatibus dolorum placeat aliquid eligendi numquam
-          dolor tempore labore quaerat nisi architecto provident tempora aliquam
-          inventore. Neque excepturi nemo, culpa aut quia illo ratione eaque ea.
-          Nihil cumque deserunt, tenetur vitae totam accusantium inventore,
-          laboriosam iste error unde earum quis?
+          {/* TODO */}
+          <Link href='#' className="cta hide-sm">Download Resume</Link>
         </section>
         <section id="contact">
           <h2>CONTACT</h2>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui
-          molestias amet repudiandae nam! Sint quas in nam harum eius nemo
-          voluptatibus, unde, fugiat similique obcaecati fugit dicta eum
-          reprehenderit dolores, non quod. Nostrum architecto labore cumque,
-          optio dicta sit eaque hic aut harum. Magnam provident illum itaque
-          odit illo, minima earum cum, fuga dolorem debitis odio ex error natus
-          pariatur deserunt esse recusandae. Numquam sit, nulla placeat,
-          reiciendis mollitia aspernatur pariatur molestias laborum eaque
-          repellat inventore quibusdam? Excepturi aut dolorum possimus in
-          expedita provident error accusamus, blanditiis assumenda deserunt
-          itaque magnam porro accusantium quo culpa, sit ea repudiandae?
-          Repudiandae numquam, deserunt enim qui delectus quos porro ratione?
-          Quae, amet. Consectetur numquam vel ex tempore placeat perspiciatis
-          reiciendis quo minus dolor delectus sunt mollitia voluptatem
-          blanditiis eum fugiat illo saepe fuga assumenda officiis eaque
-          ducimus, magnam nesciunt, esse tenetur. Vel, culpa ullam? Quibusdam
-          nulla odio recusandae doloribus saepe, dolor omnis aut ad
-          necessitatibus minus amet nisi. Quos culpa delectus eligendi. Harum
-          exercitationem facere adipisci provident, asperiores aliquam
-          perspiciatis dolorem eligendi autem facilis veniam veritatis assumenda
-          itaque voluptatum laborum eius accusamus corrupti sequi at
-          accusantium! Perferendis ad sit est magni omnis illo dolore eveniet
-          inventore suscipit accusamus, aperiam magnam quos esse laudantium
-          adipisci et ipsum minus. Reprehenderit eum eveniet rem iste neque et
-          reiciendis fugiat sequi, porro ipsam, repellendus assumenda nisi
-          mollitia, omnis voluptas fugit. Assumenda nam architecto sapiente
-          error autem incidunt enim? Sit quod laboriosam adipisci, voluptatem
-          qui repellendus cum accusantium eveniet voluptatum facilis nesciunt
-          ratione sunt. Incidunt assumenda tenetur vitae.
+          <form id="contact-form" action="POST">
+            <fieldset>
+              <div className="form-group">
+                <input type="text" placeholder="Name" />
+              </div>
+              <div className="form-group">
+                <input type="text" placeholder="Email" />
+              </div>
+              <div className="form-group">
+                <textarea
+                  name=""
+                  id=""
+                  cols="30"
+                  rows="10"
+                  placeholder="Message"
+                />
+              </div>
+            </fieldset>
+          </form>
         </section>
       </main>
     </>
@@ -176,18 +119,24 @@ export default function Home({ sections, devData }) {
 }
 
 export async function getStaticProps() {
-  const sections = {
-    about: ContentService.getPageData("home/about"),
-  };
+  const sections = {};
 
-  const devData = ContentService.readDir("home/portfolio/dev").sort(
-    (a, b) => a.data.index - b.data.index
-  );
+  for (const section of ["about"]) {
+    sections[section] = ContentService.getPageData(`home/${section}`);
+  }
+
+  const portfolio = {};
+
+  for (const subdir of ["dev", "design"]) {
+    portfolio[subdir] = ContentService.readDir(`home/portfolio/${subdir}`).sort(
+      (a, b) => a.data.index - b.data.index
+    );
+  }
 
   return {
     props: {
       sections,
-      devData,
+      portfolio,
     },
   };
 }

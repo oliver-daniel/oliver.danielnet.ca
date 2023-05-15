@@ -2,7 +2,7 @@ import Socials from "./Socials";
 
 export default function Footer() {
     return (
-        <footer>
+        <footer role="contentinfo">
             <div className="container grid-lg columns">
                 <div className="column col col-sm-12"></div>
                 <div className="column col col-sm-12">
