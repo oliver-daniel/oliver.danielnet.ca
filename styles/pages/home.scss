@@ -50,6 +50,19 @@ $overlay-width: 80px;
 header {
   font-size: 1.2rem;
 
+  position: sticky;
+  left: 0;
+  width: 100%;
+  top: -100%;
+  z-index: 99;
+
+  transition: top 0.17s ease;
+
+  &[data-show="true"] {
+    top: 0;
+    background-color: $black-800;
+  }
+
   #logo {
     a {
       display: inline-flex;

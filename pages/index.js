@@ -10,6 +10,7 @@ import config from "@/config/next-seo.config";
 import PortfolioMenu from "@/components/PortfolioMenu";
 
 import Logo from "../public/svg/logo.svg";
+import useScrollDirection, { UP } from "@/lib/useScrollDirection";
 
 const links = [
   ["About", "#about"],
@@ -23,8 +24,9 @@ const sectionIds = links.map(([_, id]) => id.slice(1));
 sectionIds.unshift("hero");
 
 const Header = () => {
+  const scrollDirection = useScrollDirection()
   return (
-    <header className="navbar hide-sm container grid-lg" role="banner">
+    <header data-show={scrollDirection === UP} className="navbar hide-sm container grid-lg" role="banner">
       <section className="navbar-section">
         <div className="hide-sm" id="logo">
           <Link href="#">
