@@ -49,6 +49,17 @@ $overlay-width: 80px;
 
 header {
   font-size: 1.2rem;
+
+  #logo {
+    a {
+      display: inline-flex;
+    }
+    img {
+      max-height: 36px;
+      width: auto;
+    }
+  }
+
   #sections {
     gap: 2rem;
     @for $i from 1 through length($palette-light) {

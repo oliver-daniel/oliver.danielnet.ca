@@ -6,5 +6,6 @@ role: Software Developer Intern
 term: January – April 2021
 skills:
   - node
+team: Christina Chan-Ying, Oliver Daniel, Shae-Linn Davies, Yandrickx Dumalag, Reese Halfyard
 ---
 One sentence description of the project, Oliver’s role in creating it, and the main highlights regarding his contribution.

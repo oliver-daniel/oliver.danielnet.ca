@@ -9,6 +9,8 @@ import RainbowStrip from "@/components/RainbowStrip";
 import config from "@/config/next-seo.config";
 import PortfolioMenu from "@/components/PortfolioMenu";
 
+import Logo from "../public/svg/logo.svg";
+
 const links = [
   ["About", "#about"],
   ["Projects", "#projects"],
@@ -24,7 +26,11 @@ const Header = () => {
   return (
     <header className="navbar hide-sm container grid-lg" role="banner">
       <section className="navbar-section">
-        <div>LOGO</div>
+        <div className="hide-sm" id="logo">
+          <Link href="#">
+            <Image src={Logo} alt="" />
+          </Link>
+        </div>
       </section>
       <section className="navbar-section" id="sections">
         {links.map(([text, href]) => (
@@ -72,24 +78,32 @@ export default function Home({ sections, portfolio }) {
             />
           </div>
           {/* TODO */}
-          <Link href='#' className="cta hide-sm">Download Resume</Link>
+          <Link href="#" className="cta hide-sm">
+            Download Resume
+          </Link>
         </section>
         <section id="projects">
           <h2>PROJECTS</h2>
           <PortfolioMenu items={portfolio.dev} />
           {/* TODO */}
-          <Link href='#' className="cta hide-sm">Full Portfolio</Link>
+          <Link href="#" className="cta hide-sm">
+            Full Portfolio
+          </Link>
         </section>
         <section id="design">
           <h2>DESIGN</h2>
-          <PortfolioMenu items={portfolio.design}/>
+          <PortfolioMenu items={portfolio.design} />
           {/* TODO */}
-          <Link href='#' className="cta hide-sm">Full Portfolio</Link>
+          <Link href="#" className="cta hide-sm">
+            Full Portfolio
+          </Link>
         </section>
         <section id="skills">
           <h2>SKILLS</h2>
           {/* TODO */}
-          <Link href='#' className="cta hide-sm">Download Resume</Link>
+          <Link href="#" className="cta hide-sm">
+            Download Resume
+          </Link>
         </section>
         <section id="contact">
           <h2>CONTACT</h2>
