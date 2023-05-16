@@ -2,8 +2,40 @@ import { Fragment, useState } from "react";
 import cls from "classnames";
 import { convertIcon } from "@/lib/SkillIcons";
 
+import { Laptop, Mobile, Tablet } from "@/lib/mockups";
+import Image from "next/image";
+
 // TODO: hidden-until-found beforematch listener
 // https://developer.chrome.com/articles/hidden-until-found/
+const Mockup = ({ type, src }) => {
+  const Container = {
+    laptop: Laptop,
+    mobile: Mobile,
+    tablet: Tablet,
+  }[type];
+
+  if (!Container) {
+    throw new Error(`Unknown screen type ${type}`);
+  }
+
+  return (
+    <figure className={cls("mockup", type)}>
+      <Container />
+      <Image src={src} fill />
+    </figure>
+  );
+};
+
+const MockupSection = ({ name, mockups }) =>
+  mockups && (
+    <div className="mockups columns">
+      {Object.entries(mockups).map(([type, src]) => (
+        <div className="col col-xs-12" key={`mockup-${name}-${type}`}>
+          <Mockup type={type} src={src} />
+        </div>
+      ))}
+    </div>
+  );
 
 const MenuItem = ({ data, content, active }) => {
   const skillIcons = data.skills.map(convertIcon);
@@ -27,6 +59,7 @@ const MenuItem = ({ data, content, active }) => {
           }}
         />
       }
+      {/* <MockupSection name={data.name} mockups={data.mockups} /> */}
       <div className="skill-icons row">
         {skillIcons.map(({ icon: Icon, name }) => (
           <div

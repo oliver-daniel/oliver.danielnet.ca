@@ -29,7 +29,7 @@ const Header = () => {
     <header data-show={scrollDirection === UP} className="navbar hide-sm container grid-lg" role="banner">
       <section className="navbar-section">
         <div className="hide-sm" id="logo">
-          <Link href="#">
+          <Link href="#" tabIndex={-1}>
             <Image src={Logo} alt="" />
           </Link>
         </div>

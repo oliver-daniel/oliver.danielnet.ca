@@ -12,6 +12,9 @@
 /.next/
 /out/
 
+# unsaved media
+/public/**/.*
+
 # production
 /build
 
