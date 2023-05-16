@@ -20,8 +20,8 @@ const Mockup = ({ type, src }) => {
 
   return (
     <figure className={cls("mockup", type)}>
-      <Container />
-      <Image src={src} fill />
+      {/* <Container /> */}
+      <Image src={src} fill alt={`A mockup of the project on ${type}.`} />
     </figure>
   );
 };
@@ -30,7 +30,10 @@ const MockupSection = ({ name, mockups }) =>
   mockups && (
     <div className="mockups columns">
       {Object.entries(mockups).map(([type, src]) => (
-        <div className="col col-xs-12" key={`mockup-${name}-${type}`}>
+        <div
+          className={cls("column", "col-md-12", `${type}-container`)}
+          key={`mockup-${name}-${type}`}
+        >
           <Mockup type={type} src={src} />
         </div>
       ))}
@@ -59,7 +62,7 @@ const MenuItem = ({ data, content, active }) => {
           }}
         />
       }
-      {/* <MockupSection name={data.name} mockups={data.mockups} /> */}
+      <MockupSection name={data.name} mockups={data.mockups} />
       <div className="skill-icons row">
         {skillIcons.map(({ icon: Icon, name }) => (
           <div

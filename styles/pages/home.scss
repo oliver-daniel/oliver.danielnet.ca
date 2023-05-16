@@ -307,39 +307,87 @@ main#home {
         font-size: 36px;
         display: flex;
         gap: 0.5rem;
+        margin: 0.5rem 0;
       }
     }
     .mockups {
-      flex-wrap: wrap;
-      .mockup {
+      gap: 1rem;
+      justify-content: center;
+      align-items: flex-start;
+      > .column {
+        height: 100%;
         position: relative;
+      }
+      .mockup {
+        // @include base.neon-drop($turquoise-200);
+        box-shadow: 0 0 0.5rem $turquoise-200;
+        position: relative;
+        margin: 0 auto;
+        height: 11rem;
+        border: 2px solid $turquoise-200;
+        border-radius: 20px;
         svg {
           display: block;
           margin: 0 auto;
         }
         img {
+          position: relative;
           margin: 0 auto;
-          height: auto !important;
+          object-fit: cover;
         }
-        // magic numbers
+        // TODO: SO MANY MAGIC NUMBERS
         &.laptop {
+          $bottom-size: 1em;
+          aspect-ratio: 425/265;
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+          height: calc(11rem - #{$bottom-size});
           img {
-            width: 60% !important;
-            top: 15% !important;
+            padding: 14px 10px;
+          }
+          &::after {
+            content: '';
+            position: absolute;
+            width: 110%;
+            height: $bottom-size;
+            border: 2px solid $turquoise-200;
+            top: 100%;
+            margin-left: -5%;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
           }
         }
         &.mobile {
+          aspect-ratio: 151/269;
           img {
-            width: 20% !important;
-            top: 12.5% !important;
+            padding: 14px 10px;
           }
         }
         &.tablet {
-          img {
-            width: 30% !important;
-            top: 15% !important;
+          aspect-ratio: 202/269; img {
+            padding: 14px 10px;
           }
         }
+
+        // magic numbers
+        // &.laptop {
+        //   img {
+        //     width: 60% !important;
+        //     top: 15% !important;
+        //   }
+        // }
+        // &.mobile {
+        //   img {
+        //     width: 20% !important;
+        //     top: 12.5% !important;
+        //   }
+        // }
+        // &.tablet {
+        //   img {
+        //     width: 30% !important;
+        //     top: 15% !important;
+        //   }
+        // }
       }
     }
   }
