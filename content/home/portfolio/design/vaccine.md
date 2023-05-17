@@ -2,9 +2,15 @@
 index: 0
 name: Vaccine Ontario
 short_name: Vaccine Ontario
-role: Software Developer Intern
-term: January – April 2021
+role: Course project
+term: January – March 2022
 skills:
-  - node
+  - figma
+mockups:
+  mobile: /img/portfolio/design/vaccineontario/mobile_1.png
+  watch: /img/portfolio/design/vaccineontario/watch_1.png
 ---
-One sentence description of the project, Oliver’s role in creating it, and the main highlights regarding his contribution.
+
+Fully-interactive mockups of a mobile application and wearable companion app, helping Ontario residents manage their COVID-19 vaccine appointments and certificates.
+
+<sub>Created for course project. Not developed by or associated with the Government of Ontario. Any similarity to Government of Ontario digital assets is for simulation purposes only.</sub>

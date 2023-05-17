@@ -2,10 +2,10 @@
 index: 1
 name: Studdi Buddi
 short_name: Studdi Buddi
-role: Software Developer Intern
-term: January – April 2021
+role: Course project
+term: September – December 2021
 skills:
-  - node
+  - figma
 team: Christina Chan-Ying, Oliver Daniel, Shae-Linn Davies, Yandrickx Dumalag, Reese Halfyard
 ---
-One sentence description of the project, Oliver’s role in creating it, and the main highlights regarding his contribution.
+Green-field UX research project based on the Double Diamond model.The final deliverable was a medium-fidelity prototype for a mobile directory of study spaces on the University of Toronto St. George campus.

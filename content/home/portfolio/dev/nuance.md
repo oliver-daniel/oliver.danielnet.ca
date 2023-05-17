@@ -5,6 +5,9 @@ short_name: Nuance
 role: Software Developer Intern
 term: May – September 2020, '21, '22
 skills:
-  - django
+  - node
+  - react
+mockups:
+  laptop: /img/portfolio/dev/nuance/dashboard_1.png
 ---
-One sentence description of the project, Oliver’s role in creating it, and the main highlights regarding his contribution.
+Developed Node-based clients for the Nuance Mix interaction design toolkit. Major projects include decreasing TTI for the React-based web portal by more than 25%, and transitioning the Mix CLI for automated clients to open source.

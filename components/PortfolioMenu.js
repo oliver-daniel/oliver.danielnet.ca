@@ -2,27 +2,18 @@ import { useState } from "react";
 import cls from "classnames";
 import { convertIcon } from "@/lib/SkillIcons";
 
-import { Laptop, Mobile, Tablet } from "@/lib/mockups";
 import Image from "next/image";
 
 // TODO: hidden-until-found beforematch listener
 // https://developer.chrome.com/articles/hidden-until-found/
 const Mockup = ({ type, src }) => {
-  const Container = {
-    laptop: Laptop,
-    mobile: Mobile,
-    tablet: Tablet,
-  }[type];
-
-  if (!Container) {
-    throw new Error(`Unknown screen type ${type}`);
-  }
-
   return (
     <figure className={cls("mockup", type)}>
-      {/* <Container /> */}
-      <Image src={src} fill alt={`A mockup of the project on ${type}.`} 
-      sizes="300px"
+      <Image
+        src={src}
+        fill
+        alt={`A mockup of the project on ${type}.`}
+        sizes="300px"
       />
     </figure>
   );
@@ -42,10 +33,13 @@ const MockupSection = ({ name, mockups }) =>
     </div>
   );
 
-const MenuItem = ({ data, content, active }) => {
+const MenuItem = ({ id: path, data, content, active }) => {
   const skillIcons = data.skills.map(convertIcon);
+  const id = path.split('/').slice(-1);
   return (
-    <div className={cls("menu-item", { active })} role="tabpanel">
+    <div className={cls("menu-item", { active })} 
+    id={`menu-item-${id}`}
+    role="tabpanel">
       <hgroup>
         <h3
           dangerouslySetInnerHTML={{

@@ -43,7 +43,7 @@
       p {
         position: relative;
         margin: auto 2em;
-        &::before {
+        &:first-of-type:before {
           content: "//";
           position: absolute;
           left: -2em;
@@ -57,14 +57,33 @@
       gap: 0.5rem;
       margin: 1rem 0;
     }
+
+    // customs
+    &#menu-item-avion {
+        .mockup.laptop img {
+            object-position: 50% 0;
+        }
+    }
+
+    &#menu-item-nuance {
+        .mockup.laptop img {
+            object-position: 0 0;
+        }
+    }
   }
   .mockups {
     gap: 1rem;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
+    min-height: 11rem;
+    $bottom-size: 1em;
     > .column {
-      height: 100%;
-      position: relative;
+        height: 100%;
+        position: relative;
+        
+      &.laptop-container {
+        margin-top: -$bottom-size;
+      }
     }
     .mockup {
       // @include base.neon-drop($turquoise-200);
@@ -85,7 +104,6 @@
       }
       // TODO: SO MANY MAGIC NUMBERS
       &.laptop {
-        $bottom-size: 1em;
         aspect-ratio: 425/265;
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
@@ -116,6 +134,37 @@
         aspect-ratio: 202/269;
         img {
           padding: 14px 10px;
+        }
+      }
+      &.watch {
+        aspect-ratio: 1/1;
+        border-radius: 100%;
+        background-color: $black-800;
+        position: relative;
+        
+        max-width: 7.5rem;
+        height: auto;
+        margin: 0 auto;
+        &::before {
+            content: '';
+            position: absolute;
+            background-color: black;
+            width: 50%;
+            left: 25%;
+            height: 11rem;
+            top: -25%;
+            border: 2px solid $turquoise-200;
+            margin: 0 auto;
+
+            @media screen and (max-width: 970px) {
+                & {
+                    transform: rotate();
+                }
+            }
+        }
+        img {
+            border-radius: 100%;
+            border: 2px solid $turquoise-200
         }
       }
     }

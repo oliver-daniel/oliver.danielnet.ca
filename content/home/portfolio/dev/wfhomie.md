@@ -6,5 +6,8 @@ role: Software Developer Intern
 term: January – April 2021
 skills:
   - node
+  - react
+mockups:
+  laptop: /img/portfolio/dev/wfhomie/desktop_1.png
 ---
-One sentence description of the project, Oliver’s role in creating it, and the main highlights regarding his contribution.
+Adapted an inherited project scaffold into a fully functional platform for events for remote-first work teams. Major projects include implementing CI/CD using Gitlab CI, with automated feature preview deployments and build status notifications.

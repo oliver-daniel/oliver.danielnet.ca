@@ -5,6 +5,11 @@ short_name: Avion Cargo
 role: Full-stack Developer
 term: May – September 2020
 skills:
-  - django
+  - node
+  - react
+  - nextjs
+  - netlify
+mockups:
+  laptop: /img/portfolio/dev/avion/AvionLandingTablet.png
 ---
-One sentence description of the project, Oliver’s role in creating it, and the main highlights regarding his contribution.
+Design and full-stack development of organization website. GitHub-powered content management with NetlifyCMS, including 100% English/French mirroring of site content and instant language switching.

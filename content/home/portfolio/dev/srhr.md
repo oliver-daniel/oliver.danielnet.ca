@@ -5,15 +5,13 @@ short_name: SRHR Hubs
 role: Full Stack Developer
 term: September 2022 – March 2023
 skills:
-  - node
   - react
   - nextjs
-  - html
-  - css
+  - django
 mockups:
   laptop: /img/portfolio/dev/srhr/SRHRLandingDesktop.png
   mobile: /img/portfolio/dev/srhr/SRHRSearchFilterMobile.png
   tablet: /img/portfolio/dev/srhr/SRHRMapAccessibilityTablet.png
   
 ---
-One sentence description of the project, Oliver’s role in creating it, and the main highlights regarding his contribution.
+Full-stack development and maintenance of the Community Map project website, an interactive directory and mapping system of community resources for people with sexual and reproductive advocacy needs in Ontario and beyond.

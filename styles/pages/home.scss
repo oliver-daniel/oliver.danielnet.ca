@@ -89,7 +89,7 @@ header {
         &:focus {
           @include base.neon($color);
           &::before {
-            text-decoration: none;
+            text-decoration: none !important;
           }
         }
       }
@@ -136,6 +136,12 @@ main#home {
     }
     .socials {
       margin: 2rem auto;
+      a {
+        border-bottom: 2px solid transparent;
+      }
+      a:hover, a:focus {
+        border-bottom: 2px solid white;
+      }
     }
   }
 
@@ -206,6 +212,15 @@ main#home {
       button.tab-item.active {
         color: $yellow-200;
         border-color: $yellow-200;
+      }
+      .mockup {
+        &,
+        &::before,
+        &::after,
+        &.watch img {
+          box-shadow: 0 0 0.5rem $yellow-200;
+          border: 2px solid $yellow-200;
+        }
       }
     }
   }
