@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import cls from "classnames";
 import { convertIcon } from "@/lib/SkillIcons";
 
@@ -21,7 +21,9 @@ const Mockup = ({ type, src }) => {
   return (
     <figure className={cls("mockup", type)}>
       {/* <Container /> */}
-      <Image src={src} fill alt={`A mockup of the project on ${type}.`} />
+      <Image src={src} fill alt={`A mockup of the project on ${type}.`} 
+      sizes="300px"
+      />
     </figure>
   );
 };

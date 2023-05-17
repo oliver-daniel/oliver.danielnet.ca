@@ -1,7 +1,6 @@
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useLayoutEffect } from "react";
 
 export default function RainbowStrip({ ids }) {
-  const [style, setStyle] = useState(null);
   useLayoutEffect(() => {
     const { height: mainHeight } = document
       .getElementById("home")
@@ -14,33 +13,39 @@ export default function RainbowStrip({ ids }) {
       return [top, bottom, (100 * (bottom + top)) / (2 * mainHeight)];
     });
 
-    const els = document.querySelectorAll(".rainbow-strip");
+    const el = document.querySelector(".rainbow-strip");
 
-    const lightPalette = getComputedStyle(els[0])
-      .getPropertyValue("--rainbow-light-palette")
-      .trim()
-      .split(", ");
+    for (const variant of ["light", "dark"]) {
+      const name = `--rainbow-${variant}-palette`;
+      const palette = getComputedStyle(el)
+        .getPropertyValue(name)
+        .split(",")
+        .map(val => val.trim())
 
-    lightPalette.unshift("transparent");
+      if (palette[0].startsWith("linear-gradient")) {
+        return;
+      }
 
-    const breakpoints = dimensions
-      .map(
-        ([_top, _bottom, percentage], i) =>
-          `${lightPalette[i]} ${percentage.toFixed(1)}%`
-      )
-      .join(", ");
+      palette.unshift("transparent");
 
-    const gradient = `linear-gradient(transparent, ${breakpoints})`;
+      const breakpoints = dimensions
+        .map(
+          ([_top, _bottom, percentage], i) =>
+            `${palette[i]} ${percentage.toFixed(1)}%`
+        )
+        .join(", ");
 
-    setStyle({
-      background: gradient,
-    });
-  }, [ids, setStyle]);
+      document.documentElement.style.setProperty(
+        name,
+        `linear-gradient(transparent, ${breakpoints})`
+      );
+    }
+  }, [ids]);
 
   return (
     <>
-      <div className="rainbow-strip" style={style}></div>
-      <div className="rainbow-strip" style={style}></div>
+      <div className="rainbow-strip"></div>
+      <div className="rainbow-strip"></div>
     </>
   );
 }

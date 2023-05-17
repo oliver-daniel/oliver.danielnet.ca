@@ -71,7 +71,7 @@ export default function Home({ sections, portfolio }) {
           <h2>ABOUT</h2>
           <div className="columns col-gapless">
             <div className="img-container column col-sm-12 col">
-              <Image {...config.headshot} />
+              <Image {...config.headshot} sizes="210px"/>
               <div />
             </div>
             <div
