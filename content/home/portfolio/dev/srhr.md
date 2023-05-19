@@ -9,9 +9,9 @@ skills:
   - nextjs
   - django
 mockups:
-  laptop: /img/portfolio/dev/srhr/SRHRLandingDesktop.png
-  mobile: /img/portfolio/dev/srhr/SRHRSearchFilterMobile.png
-  tablet: /img/portfolio/dev/srhr/SRHRMapAccessibilityTablet.png
+  laptop: /portfolio/dev/srhr/SRHRLandingDesktop.png
+  mobile: /portfolio/dev/srhr/SRHRSearchFilterMobile.png
+  tablet: /portfolio/dev/srhr/SRHRMapAccessibilityTablet.png
   
 ---
 Full-stack development and maintenance of the Community Map project website, an interactive directory and mapping system of community resources for people with sexual and reproductive advocacy needs in Ontario and beyond.

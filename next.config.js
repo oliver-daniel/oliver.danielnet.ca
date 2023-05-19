@@ -5,6 +5,7 @@ const nextConfig = {
   // output: "export",
 
   images: {
+    loaderFile: '/lib/CloudinaryLoader.js',
     remotePatterns: [
       {
         protocol: "https",

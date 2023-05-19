@@ -8,6 +8,6 @@ skills:
   - node
   - react
 mockups:
-  laptop: /img/portfolio/dev/nuance/dashboard_1.png
+  laptop: /portfolio/dev/nuance/dashboard_1.png
 ---
 Developed Node-based clients for the Nuance Mix interaction design toolkit. Major projects include decreasing TTI for the React-based web portal by more than 25%, and transitioning the Mix CLI for automated clients to open source.

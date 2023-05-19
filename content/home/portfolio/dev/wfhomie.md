@@ -8,6 +8,6 @@ skills:
   - node
   - react
 mockups:
-  laptop: /img/portfolio/dev/wfhomie/desktop_1.png
+  laptop: /portfolio/dev/wfhomie/desktop_1.png
 ---
 Adapted an inherited project scaffold into a fully functional platform for events for remote-first work teams. Major projects include implementing CI/CD using Gitlab CI, with automated feature preview deployments and build status notifications.

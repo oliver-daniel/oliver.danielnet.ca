@@ -16,7 +16,7 @@ const links = [
   ["About", "#about"],
   ["Projects", "#projects"],
   ["Design", "#design"],
-  ["Skills", "#skills"],
+  // ["Skills", "#skills"],
   ["Contact", "#contact"],
 ];
 
@@ -100,13 +100,13 @@ export default function Home({ sections, portfolio }) {
             Full Portfolio
           </Link>
         </section>
-        <section id="skills">
+        {/* <section id="skills">
           <h2>SKILLS</h2>
-          {/* TODO */}
+          {/* TODO *REMOVEME/}
           <Link href="#" className="cta hide-sm">
             Download Resume
           </Link>
-        </section>
+        </section> */}
         <section id="contact">
           <h2>CONTACT</h2>
           <form id="contact-form" action="POST">

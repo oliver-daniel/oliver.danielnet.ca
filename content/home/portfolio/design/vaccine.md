@@ -7,8 +7,8 @@ term: January – March 2022
 skills:
   - figma
 mockups:
-  mobile: /img/portfolio/design/vaccineontario/mobile_1.png
-  watch: /img/portfolio/design/vaccineontario/watch_1.png
+  mobile: /portfolio/design/vaccineontario/mobile_1.png
+  watch: /portfolio/design/vaccineontario/watch_1.png
 ---
 
 Fully-interactive mockups of a mobile application and wearable companion app, helping Ontario residents manage their COVID-19 vaccine appointments and certificates.
