@@ -15,6 +15,9 @@
 # unsaved media
 /public/**/.*
 
+# cloudinary stuff
+/public/img/**/*
+
 # production
 /build
 
