@@ -139,7 +139,8 @@ main#home {
       a {
         border-bottom: 2px solid transparent;
       }
-      a:hover, a:focus {
+      a:hover,
+      a:focus {
         border-bottom: 2px solid white;
       }
     }
@@ -251,6 +252,18 @@ main#home {
           color: $purple-200;
         }
       }
+    }
+  }
+}
+#image-modal {
+  .modal-container {
+    a[aria-label=close] {
+      cursor: pointer;
+    }
+
+    img {
+      margin: 0 auto;
+      min-width: 25vmax;
     }
   }
 }

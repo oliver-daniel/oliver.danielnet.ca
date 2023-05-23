@@ -11,6 +11,7 @@ import PortfolioMenu from "@/components/PortfolioMenu";
 
 import Logo from "../public/svg/logo.svg";
 import useScrollDirection, { UP } from "@/lib/useScrollDirection";
+import ImageModal from "@/components/ImageModal";
 
 const links = [
   ["About", "#about"],
@@ -30,7 +31,7 @@ const Header = () => {
       <section className="navbar-section">
         <div className="hide-sm" id="logo">
           <Link href="#" tabIndex={-1}>
-            <Image src={Logo} alt="" />
+            <Image src={Logo} unoptimized alt="" />
           </Link>
         </div>
       </section>
@@ -130,6 +131,7 @@ export default function Home({ sections, portfolio }) {
           </form>
         </section>
       </main>
+      <ImageModal />
     </>
   );
 }
