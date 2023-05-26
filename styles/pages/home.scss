@@ -50,31 +50,6 @@ body:has(#home) {
 }
 
 header {
-  font-size: 1.2rem;
-
-  position: sticky;
-  left: 0;
-  width: 100%;
-  top: -100%;
-  z-index: 99;
-
-  transition: top 0.17s ease;
-
-  &[data-show="true"] {
-    top: 0;
-    background-color: $black-800;
-  }
-
-  #logo {
-    a {
-      display: inline-flex;
-    }
-    img {
-      max-height: 36px;
-      width: auto;
-    }
-  }
-
   #sections {
     gap: 2rem;
     @for $i from 1 through length($palette-light) {
@@ -94,7 +69,6 @@ header {
         }
       }
     }
-    padding: 1rem 0;
   }
 }
 

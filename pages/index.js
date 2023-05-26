@@ -9,9 +9,8 @@ import RainbowStrip from "@/components/RainbowStrip";
 import config from "@/config/next-seo.config";
 import PortfolioMenu from "@/components/PortfolioMenu";
 
-import Logo from "../public/svg/logo_v2.svg";
-import useScrollDirection, { UP } from "@/lib/useScrollDirection";
 import ImageModal from "@/components/ImageModal";
+import Header from "@/components/Header";
 
 const links = [
   ["About", "#about"],
@@ -24,21 +23,8 @@ const links = [
 const sectionIds = links.map(([_, id]) => id.slice(1));
 sectionIds.unshift("hero");
 
-const Header = () => {
-  const scrollDirection = useScrollDirection();
-  return (
-    <header
-      data-show={scrollDirection === UP}
-      className="navbar hide-sm container grid-lg"
-      role="banner"
-    >
-      <section className="navbar-section">
-        <div className="hide-sm" id="logo">
-          <Link href="#" tabIndex={-1}>
-            <Image src={Logo} unoptimized alt="" />
-          </Link>
-        </div>
-      </section>
+const HomeHeader = () => (
+  <Header>
       <section className="navbar-section" id="sections">
         {links.map(([text, href]) => (
           <Link key={text} scroll={false} href={href}>
@@ -46,21 +32,17 @@ const Header = () => {
           </Link>
         ))}
       </section>
-    </header>
+    </Header>
   );
-};
 
 export default function Home({ sections, portfolio }) {
   return (
     <>
       <Head>
         <title>Oliver Daniel</title>
-        <meta name="description" content="Oliver Daniel's portfolio site" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <SkipToContent href="about" />
-      <Header />
+      <HomeHeader />
       <main id="home" className="container grid-lg" role="main">
         <RainbowStrip ids={sectionIds} />
         <section id="hero" className="centered">

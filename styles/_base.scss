@@ -2,13 +2,11 @@
 @use "sass:color";
 @use "./variables" as *;
 //libraries
-@use './spectre';
+@use "./spectre";
 // fonts
 @import url("https://fonts.cdnfonts.com/css/potra");
 @import url("https://fonts.cdnfonts.com/css/salma-alfa-sans");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
-
-
 
 @mixin neon($color) {
   color: $color;
@@ -76,6 +74,35 @@ html {
 
 hgroup > * {
   margin-bottom: unset;
+}
+
+header {
+  font-size: 1.2rem;
+
+  position: sticky;
+  left: 0;
+  width: 100%;
+  top: -100%;
+  z-index: 99;
+
+  padding: 1rem 0;
+
+  transition: top 0.17s ease;
+
+  &[data-show="true"] {
+    top: 0;
+    background-color: $black-800;
+  }
+
+  #logo {
+    a {
+      display: inline-flex;
+    }
+    img {
+      max-height: 36px;
+      width: auto;
+    }
+  }
 }
 
 footer {

@@ -1,29 +1,39 @@
 import ProjectDetailLayout from "@/components/ProjectDetailLayout";
 import ContentService from "@/lib/ContentService";
+import Head from "next/head";
 
 const ProjectDetailPage = ({ data, content }) => {
+  const pageTitle = `${data.name} | Oliver Daniel`;
   return (
-    <ProjectDetailLayout>
-      <div
-        id="content"
-        dangerouslySetInnerHTML={{
-          __html: content,
-        }}
-      />
-    </ProjectDetailLayout>
+    <>
+      <Head>
+        <title>{pageTitle}</title>
+      </Head>
+      <ProjectDetailLayout>
+        <section
+          id="content"
+          dangerouslySetInnerHTML={{
+            __html: content || "<h3>Coming soon</h3>",
+          }}
+          style={{
+            minHeight: "75vh"
+          }}
+        />
+      </ProjectDetailLayout>
+    </>
   );
 };
 
 export default ProjectDetailPage;
 
 export const getStaticProps = async ({ params: { id } }) => {
-  const {data, content} = ContentService.findProjectbyURI(id);
+  const { data, content } = ContentService.findProjectbyURI(id);
   return {
     props: {
       data,
-      content
-    }
-  }
+      content,
+    },
+  };
 };
 
 export const getStaticPaths = async () => {
