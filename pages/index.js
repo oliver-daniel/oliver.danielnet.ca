@@ -25,9 +25,13 @@ const sectionIds = links.map(([_, id]) => id.slice(1));
 sectionIds.unshift("hero");
 
 const Header = () => {
-  const scrollDirection = useScrollDirection()
+  const scrollDirection = useScrollDirection();
   return (
-    <header data-show={scrollDirection === UP} className="navbar hide-sm container grid-lg" role="banner">
+    <header
+      data-show={scrollDirection === UP}
+      className="navbar hide-sm container grid-lg"
+      role="banner"
+    >
       <section className="navbar-section">
         <div className="hide-sm" id="logo">
           <Link href="#" tabIndex={-1}>
@@ -72,7 +76,7 @@ export default function Home({ sections, portfolio }) {
           <h2>ABOUT</h2>
           <div className="columns col-gapless">
             <div className="img-container column col-sm-12 col">
-              <Image {...config.headshot} sizes="210px"/>
+              <Image {...config.headshot} sizes="210px" />
               <div />
             </div>
             <div
@@ -143,12 +147,12 @@ export async function getStaticProps() {
     sections[section] = ContentService.getPageData(`home/${section}`);
   }
 
-  const portfolio = {};
+  const portfolio = ContentService.getAllProjects();
 
-  for (const subdir of ["dev", "design"]) {
-    portfolio[subdir] = ContentService.readDir(`portfolio/${subdir}`).sort(
-      (a, b) => a.data.index - b.data.index
-    )
+  for (const subdir in portfolio) {
+    portfolio[subdir] = portfolio[subdir].sort(
+      ({ data: a }, { data: b }) => a.index - b.index
+    );
   }
 
   return {
