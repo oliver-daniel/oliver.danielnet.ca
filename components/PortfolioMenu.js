@@ -33,7 +33,7 @@ const MockupSection = ({ name, mockups }) =>
     </div>
   );
 
-const MenuItem = ({ id: path, data, content, active }) => {
+const MenuItem = ({ id: path, data, active }) => {
   const skillIcons = data.skills.map(convertIcon);
   const id = path.split('/').slice(-1);
   return (
@@ -54,7 +54,7 @@ const MenuItem = ({ id: path, data, content, active }) => {
         <div
           className="description"
           dangerouslySetInnerHTML={{
-            __html: content,
+            __html: data.blurb,
           }}
         />
       }

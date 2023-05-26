@@ -12,5 +12,7 @@ skills:
   - netlify
 mockups:
   laptop: /portfolio/dev/avion/AvionLandingTablet.png
+
+blurb: |
+  Design and full-stack development of organization website. GitHub-powered content management with NetlifyCMS, including 100% English/French mirroring of site content and instant language switching.
 ---
-Design and full-stack development of organization website. GitHub-powered content management with NetlifyCMS, including 100% English/French mirroring of site content and instant language switching.

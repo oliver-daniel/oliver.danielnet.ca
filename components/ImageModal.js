@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import cls from "classnames";
 import { useLayoutEffect, useState } from "react";
-import { FiX } from "react-icons/fi";
+import { FiX as XIcon } from "react-icons/fi";
 
 const ImageModal = () => {
   const [srcset, setSrcset] = useState(null);
@@ -48,7 +48,7 @@ const ImageModal = () => {
       <div className="modal-container">
         <div className="modal-header">
           <a className="btn btn-clear float-right" aria-label="close">
-            <FiX onClick={onClose} />
+            <XIcon onClick={onClose} />
           </a>
         </div>
         <div className="modal-body">
@@ -57,7 +57,7 @@ const ImageModal = () => {
               "img-responsive img-fit-contain",
               isLoading && "d-invisible"
             )}
-            srcset={srcset}
+            srcSet={srcset}
             alt={alt}
             onLoad={handleLoad}
           />

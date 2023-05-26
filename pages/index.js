@@ -9,7 +9,7 @@ import RainbowStrip from "@/components/RainbowStrip";
 import config from "@/config/next-seo.config";
 import PortfolioMenu from "@/components/PortfolioMenu";
 
-import Logo from "../public/svg/logo.svg";
+import Logo from "../public/svg/logo_v2.svg";
 import useScrollDirection, { UP } from "@/lib/useScrollDirection";
 import ImageModal from "@/components/ImageModal";
 
@@ -146,9 +146,9 @@ export async function getStaticProps() {
   const portfolio = {};
 
   for (const subdir of ["dev", "design"]) {
-    portfolio[subdir] = ContentService.readDir(`home/portfolio/${subdir}`).sort(
+    portfolio[subdir] = ContentService.readDir(`portfolio/${subdir}`).sort(
       (a, b) => a.data.index - b.data.index
-    );
+    )
   }
 
   return {

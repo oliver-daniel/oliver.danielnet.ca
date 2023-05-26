@@ -30,7 +30,7 @@
     display: none;
 
     &.active {
-      display: block;
+      display: inherit;
     }
 
     h4 {
@@ -38,7 +38,7 @@
     }
 
     .description {
-      margin: 1rem auto;
+      padding: 1rem 0;
 
       p {
         position: relative;
@@ -55,7 +55,6 @@
       font-size: 36px;
       display: flex;
       gap: 0.5rem;
-      margin: 1rem 0;
     }
 
     // customs
@@ -72,10 +71,11 @@
     }
   }
   .mockups {
-    gap: 1rem;
+    gap: 2rem;
     justify-content: center;
     align-items: center;
     min-height: 11rem;
+    margin: 1rem auto;
     $bottom-size: 1em;
     > .column {
         height: 100%;
