@@ -1,14 +1,29 @@
+import Link from "next/link";
 import Header from "./Header";
 
-const PageHeader = () => <Header></Header>;
+const PageHeader = ({ name }) => (
+  <Header>
+    <section className="navbar-center navbar-section">
+      <ul className="breadcrumb">
+        <li className="breadcrumb-item">
+          <Link href="/portfolio">Portfolio</Link>
+        </li>
+        <li className="breadcrumb-item">
+          <Link href="#">{name}</Link>
+        </li>
+      </ul>
+    </section>
+    <section className="navbar-section" id="dummy"></section>
+  </Header>
+);
 
-const ProjectDetailLayout = ({ id, children }) => {
+const ProjectDetailLayout = ({ id, headerName, children }) => {
   const pageProps = {
     id,
   };
   return (
     <>
-      <PageHeader />
+      <PageHeader name={headerName} />
       <main {...pageProps} className="page project-detail container grid-lg">
         {children}
       </main>

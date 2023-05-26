@@ -9,7 +9,7 @@ const ProjectDetailPage = ({ data, content }) => {
       <Head>
         <title>{pageTitle}</title>
       </Head>
-      <ProjectDetailLayout>
+      <ProjectDetailLayout id={data.id} headerName={data.name}>
         <section
           id="content"
           dangerouslySetInnerHTML={{
