@@ -1,9 +1,23 @@
 import ProjectDetailLayout from "@/components/ProjectDetailLayout";
 import ContentService from "@/lib/ContentService";
+import { REPLACEMENTS } from "@/lib/replacePortfolioFigure";
 import Head from "next/head";
+import { useLayoutEffect } from "react";
+import { render } from "react-dom";
+import { renderToString } from "react-dom/server";
 
 const ProjectDetailPage = ({ data, content }) => {
   const pageTitle = `${data.name} | Oliver Daniel`;
+  // content = replacePortfolioFigure(content, 'vaccine.lofi-mobile')
+
+  useLayoutEffect(() => {
+    for (const [key, replacement] of Object.entries(REPLACEMENTS)) {
+      const selection = document.querySelector(`figure#${key}`);
+      if (!selection) continue;
+      render(replacement, selection)
+    }
+  }, []);
+
   return (
     <>
       <Head>
@@ -16,7 +30,7 @@ const ProjectDetailPage = ({ data, content }) => {
             __html: content || "<h3>Coming soon</h3>",
           }}
           style={{
-            minHeight: "75vh"
+            minHeight: "75vh",
           }}
         />
       </ProjectDetailLayout>
@@ -36,24 +50,14 @@ export const getStaticProps = async ({ params: { id } }) => {
   };
 };
 
+export const include = ["studdibuddi", "vaccine", "srhr"];
 export const getStaticPaths = async () => {
-  const exclude = [];
 
-  const paths = [];
-
-  const projects = ContentService.getAllProjects();
-
-  for (const subdir in projects) {
-    paths.push(
-      ...projects[subdir]
-        .filter(({ id }) => !exclude.includes(id))
-        .map(({ id }) => ({
-          params: {
-            id: id.split("/").slice(-1),
-          },
-        }))
-    );
-  }
+  const paths = include.map((id) => ({
+    params: {
+      id,
+    },
+  }));
 
   return {
     paths,

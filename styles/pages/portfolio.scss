@@ -1,3 +1,11 @@
-.page.project-detail {
-    
+.project-detail {
+    .react-multi-carousel-list {
+        &, .react-multi-carousel-item {
+            min-height: 250px;
+        }
+
+        img {
+            object-fit: contain;
+        }
+    }
 }

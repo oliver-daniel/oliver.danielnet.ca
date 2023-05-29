@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Header from "./Header";
+import SkipToContent from "./SkipToContent";
 
 const PageHeader = ({ name }) => (
   <Header>
@@ -24,6 +25,7 @@ const ProjectDetailLayout = ({ id, headerName, children }) => {
   return (
     <>
       <PageHeader name={headerName} />
+      <SkipToContent />
       <main {...pageProps} className="page project-detail container grid-lg">
         {children}
       </main>

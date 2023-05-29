@@ -140,12 +140,9 @@ main#home {
         border-radius: 10px;
         margin: 0 auto;
         position: relative;
-        // TODO proper border
         $shadow-offset: 6px;
         box-shadow: $shadow-offset $shadow-offset 0 0 $black-800,
           $shadow-offset $shadow-offset 0 3px $blue-400;
-        // outline: 4px solid $blue-400;
-        // outline-offset: 4px;
       }
     }
     p {

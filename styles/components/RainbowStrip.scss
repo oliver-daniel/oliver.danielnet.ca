@@ -10,8 +10,6 @@ $beam-width: 6px;
   background: linear-gradient(transparent, var(--rainbow-light-palette));
   background: var(--rainbow-light-palette);
   background-color: transparent;
-  // TODO: technically, the strip and the glow use
-  // DIFFERENT coloursets. This is a placeholder.
 
   &::after {
     content: "";
