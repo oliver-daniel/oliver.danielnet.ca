@@ -67,9 +67,9 @@ export default function Home({ sections, portfolio }) {
             />
           </div>
           {/* TODO */}
-          <Link href="#" className="cta hide-sm">
+          {/* <Link href="#" className="cta hide-sm">
             Download Resume
-          </Link>
+          </Link> */}
         </section>
         <section id="projects">
           <h2>PROJECTS</h2>
@@ -81,6 +81,7 @@ export default function Home({ sections, portfolio }) {
         <section id="design">
           <h2>DESIGN</h2>
           <PortfolioMenu items={portfolio.design} />
+          {/* TODO */}
           <Link href="/portfolio" className="cta hide-sm">
             Full Portfolio
           </Link>

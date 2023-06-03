@@ -1,11 +1,18 @@
 import ContentService from "@/lib/ContentService";
 import Link from "next/link";
 import { include } from "./[id]";
+import Head from "next/head";
+import Header from "@/components/Header";
 
 const PortfolioPage = ({ projects }) => {
   return (
+    <>
+    <Head>
+        <title>Portfolio | Oliver Daniel</title>
+    </Head>
+    <Header />
     <main id="portfolio-home" className="page container grid-lg">
-      The main portfolio page. Styling coming soon.
+      <h1>Portfolio Projects</h1>
       <ul>
         {projects.map(({ link, data }) => (
           <li key={data.short_name}>
@@ -13,7 +20,7 @@ const PortfolioPage = ({ projects }) => {
           </li>
         ))}
       </ul>
-    </main>
+    </main></>
   );
 };
 

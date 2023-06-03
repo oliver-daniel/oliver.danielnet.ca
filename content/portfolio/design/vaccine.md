@@ -40,7 +40,9 @@ In keeping with HCD, I created a user persona profile, **On-the-Go Omar**, to he
 Ultimately, I focused Omar's user sector to "high-effect latecomers": people whose situation prevented them from being involved with early re-integration efforts after the first wave of vaccines, i.e., at the height of relevance for vaccine 'passports', but who were still positively inclined to get vaccinated.
 
 ### Guiding principles
-Although my personal experience with the COVID-19 pandemic was certain to colour my work in some way, I tried to be deliberate about how and where. In particular, I can distinctly recall the mental fatigue I felt at the height of the early vaccine rush at words like "dose", "alert", "appointment"... So, I wanted to make these applications as inobtrusive as possible, offering the required functionality while minimizing time of use.
+Although my personal experience with the COVID-19 pandemic was certain to colour my work in some way, I tried to be deliberate about how and where. In particular, I focused on the "high-effect" aspects of booking my own appointments. I can distinctly recall the mental fatigue I felt at the height of the early vaccine rush at words like "dose", "availability", "queue"... So, I wanted to make these applications as inobtrusive as possible, offering the required functionality while minimizing time and mental effort to use.
+
+As for the aesthetics of the applications, I opted to design for Android devices, leaning in particular on extant style guides to take as much of the decision-making process as possible out of my hands. Google's Material Design and Wear OS styleguides are extensive and usually offer one (and only one) meaningful idiom for any given use case.
 
 ## Prototyping
 I've always struggled to draw on paper, especially when precision is an asset. For low-fidelity prototyping of screens for both platforms, I used a stylus to draw directly in Figma using the Pencil tool. This allowed me to combine the flexibility and speed of hand-drawing with the convenience of undo, redo, and copying shared components.
@@ -54,3 +56,5 @@ Although I had some previous experience designing for Android mobile phones, sma
 Seven workflows, dozens of component states, and weeks of hard work later, I created a working prototype that I'm proud to present. Both applications come with their own style guide, which was adapted by intertwining different flavours of Material Design with the official Government of Ontario style manual for web and mobile.
 
 Try them below! To view in fullscreen, click on a prototype and press F.
+
+<figure id="vaccine-prototypes"></figure>

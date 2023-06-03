@@ -4,8 +4,25 @@
             min-height: 250px;
         }
 
+
         img {
             object-fit: contain;
         }
+    }
+    a {
+        text-decoration: underline;
+    }
+}
+
+// magic
+figure#vaccine-lofi-watch {
+   .react-multi-carousel-item {
+    min-height: 180px;
+   }
+}
+
+figure#vaccine-prototypes {
+    iframe {
+        width: 100%;
     }
 }

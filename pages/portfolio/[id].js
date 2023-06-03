@@ -1,21 +1,35 @@
 import ProjectDetailLayout from "@/components/ProjectDetailLayout";
 import ContentService from "@/lib/ContentService";
-import { REPLACEMENTS } from "@/lib/replacePortfolioFigure";
+import replacements from "@/components/PortfolioFigure";
 import Head from "next/head";
 import { useLayoutEffect } from "react";
+import { renderToStaticMarkup, renderToString } from "react-dom/server";
 import { render } from "react-dom";
-import { renderToString } from "react-dom/server";
 
 const ProjectDetailPage = ({ data, content }) => {
   const pageTitle = `${data.name} | Oliver Daniel`;
-  // content = replacePortfolioFigure(content, 'vaccine.lofi-mobile')
+  
+  // const figureRE = /<figure id="(?<id>.+)"><\/figure>/g
+
+  // content = content.replace(figureRE, (match, id, index) => {
+  //   const replacement = replacements[id]
+  //   return `<figure id="${id}">${renderToString(replacement)}</figure>`
+  // })
+
+  // for (const {groups, indices} of content.matchAll(figureRE)) {
+  //   const replacement = renderToString(replacements[groups.id]);
+  //   const [start, end] = indices
+  //   console.log(content.substring(start[0], start[1]))
+  //   content = content.substring(0, start) + replacement + content.substring(end)
+  // }
 
   useLayoutEffect(() => {
-    for (const [key, replacement] of Object.entries(REPLACEMENTS)) {
-      const selection = document.querySelector(`figure#${key}`);
-      if (!selection) continue;
-      render(replacement, selection)
-    }
+    document.querySelectorAll("figure").forEach((node) => {
+      const replacement = replacements[node.id];
+      // TODO: fix!!!!!!
+      // Will probably require shopping out to eg mdx
+      render(replacement, node)
+    });
   }, []);
 
   return (
@@ -50,9 +64,8 @@ export const getStaticProps = async ({ params: { id } }) => {
   };
 };
 
-export const include = ["studdibuddi", "vaccine", "srhr"];
+export const include = ["vaccine", "srhr"];
 export const getStaticPaths = async () => {
-
   const paths = include.map((id) => ({
     params: {
       id,

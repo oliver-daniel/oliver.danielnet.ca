@@ -10,7 +10,9 @@ const PageHeader = ({ name }) => (
           <Link href="/portfolio">Portfolio</Link>
         </li>
         <li className="breadcrumb-item">
-          <Link href="#">{name}</Link>
+          <Link href="#" dangerouslySetInnerHTML={{
+            __html: name
+          }}/>
         </li>
       </ul>
     </section>
@@ -25,7 +27,7 @@ const ProjectDetailLayout = ({ id, headerName, children }) => {
   return (
     <>
       <PageHeader name={headerName} />
-      <SkipToContent />
+      <SkipToContent href="content"/>
       <main {...pageProps} className="page project-detail container grid-lg">
         {children}
       </main>

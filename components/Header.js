@@ -14,7 +14,7 @@ const Header = ({ children }) => {
     >
       <section className="navbar-section">
         <div className="hide-sm" id="logo">
-          <Link href="#" tabIndex={-1}>
+          <Link href="/" tabIndex={-1}>
             <Image src={Logo} unoptimized alt="" />
           </Link>
         </div>

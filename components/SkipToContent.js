@@ -7,7 +7,10 @@ export default function SkipToContent({ href }) {
       ? document.getElementById(href)
       : document.querySelector("section");
 
-    setHandler(() => () => {
+    setHandler(() => (e) => {
+      if (e.keyCode && e.keyCode !== 13) {
+        return
+      }
       target.scrollIntoView({
         behavior: "auto",
       });
@@ -20,8 +23,8 @@ export default function SkipToContent({ href }) {
   }, []);
 
   return (
-    <button id="skip-to-content" onClick={handler} role="navigation">
+    <nav className="toast" id="skip-to-content" onClick={handler} onKeyDownCapture={handler} tabIndex={1}>
       Skip to content
-    </button>
+    </nav>
   );
 }
