@@ -209,6 +209,16 @@ main#home {
       padding-top: 0;
     }
 
+    button[type=submit] {
+      background: transparent;
+      border-style: none;
+      cursor: pointer;
+
+      &:hover {
+        @include base.neon($purple-200);
+      }
+    }
+
     color: $purple-200;
 
     .form-group {

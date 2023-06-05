@@ -107,6 +107,9 @@ export default function Home({ sections, portfolio }) {
               <div className="form-group">
                 <input type="text" placeholder="Email" />
               </div>
+              <div className="form-group d-hide">
+                <input type="text" name="_gotcha" />
+              </div>
               <div className="form-group">
                 <textarea
                   name=""
@@ -117,6 +120,7 @@ export default function Home({ sections, portfolio }) {
                 />
               </div>
             </fieldset>
+            <button type="submit" className="button btn-secondary cta">Send message</button>
           </form>
         </section>
       </main>
