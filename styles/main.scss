@@ -3,6 +3,7 @@
 // pages
 @forward "pages/home";
 @forward "pages/portfolio";
+@forward "pages/resume";
 
 body {
   font-family: base.$body-fontstack;

@@ -1,0 +1,11 @@
+#resume {
+    height: 0;
+    padding-bottom: 50%;
+    position: relative;
+
+    >iframe {
+        position: absolute;
+        display: block;
+        height: 100%;
+    }
+}

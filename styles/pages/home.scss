@@ -178,7 +178,7 @@ main#home {
   #design {
     @include neon-section($yellow-200);
     .portfolio-menu {
-      .skill-icons {
+      .skill-icons, .see-case-study {
         color: $yellow-200;
       }
       button.tab-item.active {
