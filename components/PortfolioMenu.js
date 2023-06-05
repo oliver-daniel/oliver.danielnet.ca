@@ -3,6 +3,7 @@ import cls from "classnames";
 import { convertIcon } from "@/lib/SkillIcons";
 
 import Image from "next/image";
+import Link from "next/link";
 
 // TODO: hidden-until-found beforematch listener
 // https://developer.chrome.com/articles/hidden-until-found/
@@ -57,6 +58,13 @@ const MenuItem = ({ id: path, data, active }) => {
             __html: data.blurb,
           }}
         />
+      }
+      {
+        data.published && (
+          <div className="see-case-study accent">
+            <Link href={`/portfolio/${id}`}>See case study</Link>
+          </div>
+        )
       }
       <MockupSection name={data.name} mockups={data.mockups} />
       <div className="skill-icons row">

@@ -25,15 +25,15 @@ sectionIds.unshift("hero");
 
 const HomeHeader = () => (
   <Header>
-      <section className="navbar-section" id="sections">
-        {links.map(([text, href]) => (
-          <Link key={text} scroll={false} href={href}>
-            {text}
-          </Link>
-        ))}
-      </section>
-    </Header>
-  );
+    <section className="navbar-section" id="sections">
+      {links.map(([text, href]) => (
+        <Link key={text} scroll={false} href={href}>
+          {text}
+        </Link>
+      ))}
+    </section>
+  </Header>
+);
 
 export default function Home({ sections, portfolio }) {
   return (
@@ -95,7 +95,11 @@ export default function Home({ sections, portfolio }) {
         </section> */}
         <section id="contact">
           <h2>CONTACT</h2>
-          <form id="contact-form" action="POST">
+          <form
+            id="contact-form"
+            action={process.env.NEXT_PUBLIC_FORMSPREE_URL}
+            method="POST"
+          >
             <fieldset>
               <div className="form-group">
                 <input type="text" placeholder="Name" />

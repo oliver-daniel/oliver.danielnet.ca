@@ -8,7 +8,7 @@ import { render } from "react-dom";
 
 const ProjectDetailPage = ({ data, content }) => {
   const pageTitle = `${data.name} | Oliver Daniel`;
-  
+
   // const figureRE = /<figure id="(?<id>.+)"><\/figure>/g
 
   // content = content.replace(figureRE, (match, id, index) => {
@@ -28,7 +28,7 @@ const ProjectDetailPage = ({ data, content }) => {
       const replacement = replacements[node.id];
       // TODO: fix!!!!!!
       // Will probably require shopping out to eg mdx
-      render(replacement, node)
+      render(replacement, node);
     });
   }, []);
 
@@ -64,9 +64,10 @@ export const getStaticProps = async ({ params: { id } }) => {
   };
 };
 
-export const include = ["vaccine", "srhr"];
 export const getStaticPaths = async () => {
-  const paths = include.map((id) => ({
+  const publishedProjectIDs = ContentService.getPublishedProjectURIs();
+
+  const paths = publishedProjectIDs.map((id) => ({
     params: {
       id,
     },

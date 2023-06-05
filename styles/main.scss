@@ -1,16 +1,19 @@
-@use './variables' as base;
+@use "./variables" as base;
 
 // pages
-@forward 'pages/home';
-@forward 'pages/portfolio';
-
+@forward "pages/home";
+@forward "pages/portfolio";
 
 body {
-    font-family: base.$body-fontstack;
-    background-color: base.$black-800;
-    color: base.$white;
+  font-family: base.$body-fontstack;
+  background-color: base.$black-800;
+  color: base.$white;
 }
 
 main {
-    height: 100%;
+  height: 100%;
+  &.container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
 }

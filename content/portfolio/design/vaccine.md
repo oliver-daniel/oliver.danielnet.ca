@@ -11,6 +11,7 @@ mockups:
   watch: /portfolio/design/vaccineontario/watch_1.png
 blurb: |
   Fully-interactive mockups of a mobile application and wearable companion app, helping Ontario residents manage their COVID-19 vaccine appointments and certificates.
+published: true
 frontmatter:
   - Sector: Government and public health
   - Platforms:

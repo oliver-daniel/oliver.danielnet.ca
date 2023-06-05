@@ -1,3 +1,4 @@
+import Header from "@/components/Header";
 import SkipToContent from "@/components/SkipToContent";
 import ContentService from "@/lib/ContentService";
 
@@ -5,7 +6,8 @@ export default function CreditPage({ content }) {
   return (
     <>
       <SkipToContent />
-      <main id="credit" className="container">
+      <Header />
+      <main id="credit" className="container grid-lg">
         <section
           id="content"
           dangerouslySetInnerHTML={{
