@@ -1,21 +1,19 @@
 import Link from "next/link";
 import config from "../config/next-seo.config";
 
-import { FaAt, FaGithub, FaGitlab, FaLinkedin } from "react-icons/fa";
+import { FaAt, FaGithub, FaLinkedin } from "react-icons/fa";
 
-const Socials = () => [
-  <Link scroll={false} key="email" href="/#contact">
-    <FaAt />
-  </Link>,
-  <Link key="github" href={config.github}>
-    <FaGithub />
-  </Link>,
-  <Link key="gitlab" href={config.gitlab}>
-    <FaGitlab />
-  </Link>,
-  <Link key="linkedin" href={config.linkedin}>
-    <FaLinkedin />
-  </Link>,
-];
+const data = {
+  GitHub: [FaGithub, config.github],
+  LinkedIn: [FaLinkedin, config.linkedin],
+  Email: [FaAt, "/#contact"],
+};
+
+const Socials = () =>
+  Object.entries(data).map(([key, [Icon, href]]) => (
+    <Link key={key} href={href} title={key}>
+      <Icon />
+    </Link>
+  ));
 
 export default Socials;

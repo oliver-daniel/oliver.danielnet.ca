@@ -120,7 +120,9 @@ export default function Home({ sections, portfolio }) {
                 />
               </div>
             </fieldset>
-            <button type="submit" className="button btn-secondary cta">Send message</button>
+            <button type="submit" className="button btn-secondary cta">
+              Send message
+            </button>
           </form>
         </section>
       </main>

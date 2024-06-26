@@ -44,6 +44,14 @@ html {
   }
 }
 
+body {
+  font-size: 1rem;
+}
+
+a {
+  text-decoration: underline;
+}
+
 @mixin rainbow-border {
   $stripes: (0deg transparent);
 

@@ -1,7 +1,8 @@
 ---
 index: 0
-name: <abbr title="Sexual & Reproductive Health & Rights">SRHR</abbr> Hubs Toronto
+name: SRHR Hubs Toronto
 short_name: SRHR Hubs
+url: https://srhrmap.ca
 role: Full Stack Developer
 term: September 2022 – March 2023
 skills:

@@ -36,17 +36,31 @@ const MockupSection = ({ name, mockups }) =>
 
 const MenuItem = ({ id: path, data, active }) => {
   const skillIcons = data.skills.map(convertIcon);
-  const id = path.split('/').slice(-1);
+  const id = path.split("/").slice(-1);
+
+  const TitleWrap = ({ children }) =>
+    data.url ? (
+      <Link className="accent" href={data.url}>
+        {children}
+      </Link>
+    ) : (
+      children
+    );
+
   return (
-    <div className={cls("menu-item", { active })} 
-    id={`menu-item-${id}`}
-    role="tabpanel">
+    <div
+      className={cls("menu-item", { active })}
+      id={`menu-item-${id}`}
+      role="tabpanel"
+    >
       <hgroup>
-        <h3
-          dangerouslySetInnerHTML={{
-            __html: data.name,
-          }}
-        />
+        <TitleWrap>
+          <h3
+            dangerouslySetInnerHTML={{
+              __html: data.name,
+            }}
+          />
+        </TitleWrap>
         <h4>
           {data.role}, {data.term}
         </h4>
@@ -59,13 +73,11 @@ const MenuItem = ({ id: path, data, active }) => {
           }}
         />
       }
-      {
-        data.published && (
-          <div className="see-case-study accent">
-            <Link href={`/portfolio/${id}`}>See case study</Link>
-          </div>
-        )
-      }
+      {data.published && (
+        <div className="see-case-study">
+          <Link href={`/portfolio/${id}`} className="accent">See case study</Link>
+        </div>
+      )}
       <MockupSection name={data.name} mockups={data.mockups} />
       <div className="skill-icons row">
         {skillIcons.map(({ icon: Icon, name }) => (

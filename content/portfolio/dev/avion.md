@@ -2,6 +2,7 @@
 index: 3
 name: Avion Cargo Polytechnique
 short_name: Avion Cargo
+url: https://avioncargo.polymtl.ca/en
 role: Full-stack Developer
 term: May – September 2020
 skills:

@@ -2,6 +2,7 @@
 index: 2
 name: WFHomie
 short_name: WFHomie
+url: https://wfhomie.com
 role: Software Developer Intern
 term: January – April 2021
 skills:
