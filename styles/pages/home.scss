@@ -110,12 +110,29 @@ main#home {
     }
     .socials {
       margin: 2rem auto;
+      flex-wrap: wrap;
       a {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         border-bottom: 2px solid transparent;
+
+        text-decoration: none;
+        position: relative;
       }
       a:hover,
       a:focus {
         border-bottom: 2px solid white;
+      }
+
+      @media screen and (min-width: 970px) {
+        a + a::before {
+          content: "›";
+          position: absolute;
+          left: 0%;
+          color: gray;
+        }
       }
 
       @for $i from 1 through length($palette-light) {
@@ -173,8 +190,6 @@ main#home {
   #projects {
     @include neon-section($turquoise-200);
     .portfolio-menu {
-      min-height: 750px; // magic number
-
       .skill-icons {
         color: $turquoise-200;
       }
