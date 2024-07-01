@@ -173,7 +173,7 @@ main#home {
   #projects {
     @include neon-section($turquoise-200);
     .portfolio-menu {
-      min-height: 700px; // magic number
+      min-height: 750px; // magic number
 
       .skill-icons {
         color: $turquoise-200;

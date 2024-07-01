@@ -1,9 +1,13 @@
 import Header from "@/components/Header";
+import Head from "next/head";
 
 const ResumePreview = () => {
   return (
     <>
-    <Header />
+      <Head>
+        <title>Resume | Oliver Daniel</title>
+      </Head>
+      <Header />
       <main id="resume" className="container grid-lg">
         <iframe
           src={`${process.env.NEXT_PUBLIC_RESUME_PREVIEW_URL}#view=fitH`}

@@ -15,6 +15,7 @@ mockups:
   tablet: /portfolio/dev/srhr/SRHRMapAccessibilityTablet.png
 blurb: |
   Full-stack development and maintenance of the Community Map project website, an interactive directory and mapping system of community resources for people with sexual and reproductive advocacy needs in Ontario and beyond.
+  Featured at the 67th UN Commission on the Status of Women.
 published: true
 frontmatter:
   - Sector: Sex and gender advocacy

@@ -11,7 +11,7 @@ const PortfolioPage = ({ projects }) => {
       </Head>
       <Header />
       <main id="portfolio-home" className="page container grid-lg">
-        <h1>Portfolio Projects</h1>
+        <h1>Case studies</h1>
         <ul>
           {projects.map(({ link, data }) => (
             <li key={data.short_name}>

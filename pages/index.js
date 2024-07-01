@@ -74,17 +74,11 @@ export default function Home({ sections, portfolio }) {
         <section id="projects">
           <h2>PROJECTS</h2>
           <PortfolioMenu items={portfolio.dev} />
-          <Link href="/portfolio" className="cta hide-sm">
-            Full Portfolio
-          </Link>
         </section>
         <section id="design">
           <h2>DESIGN</h2>
           <PortfolioMenu items={portfolio.design} />
           {/* TODO */}
-          <Link href="/portfolio" className="cta hide-sm">
-            Full Portfolio
-          </Link>
         </section>
         {/* <section id="skills">
           <h2>SKILLS</h2>
