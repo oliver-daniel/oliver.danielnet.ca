@@ -50,11 +50,17 @@ body:has(#home) {
 }
 
 header {
+  .navbar-section {
+    flex: unset !important;
+  }
   #sections {
-    gap: 2rem;
+    flex: 1;
+    column-gap: 2rem;
+    flex-wrap: wrap;
     @for $i from 1 through length($palette-light) {
       $color: nth($palette-light, $i);
       a:nth-child(#{$i}) {
+        text-decoration: none;
         &::before {
           content: "›";
           color: $color;
@@ -63,9 +69,6 @@ header {
         &:hover,
         &:focus {
           @include base.neon($color);
-          &::before {
-            text-decoration: none !important;
-          }
         }
       }
     }

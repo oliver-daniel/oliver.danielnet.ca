@@ -15,13 +15,18 @@ import Header from "@/components/Header";
 const links = [
   ["About", "#about"],
   ["Projects", "#projects"],
-  ["Design", "#design"],
   // ["Skills", "#skills"],
   ["Contact", "#contact"],
+  ["Portfolio", "/portfolio"],
+  ["Resume", "/resume"],
 ];
 
-const sectionIds = links.map(([_, id]) => id.slice(1));
-sectionIds.unshift("hero");
+const sectionIds = ["hero"].concat(
+  links
+    .map(([_, id]) => id)
+    .filter((id) => id.startsWith("#"))
+    .map((id) => id.slice(1))
+);
 
 const HomeHeader = () => (
   <Header>

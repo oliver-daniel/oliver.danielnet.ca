@@ -8,11 +8,10 @@ export default function Footer() {
         <div className="column col col-sm-12"></div>
         <div className="column col col-sm-12">
           <Link href="/portfolio">Portfolio</Link>
+          <Link href="/resume">Resume</Link>
           <Link href="/credit">Credit</Link>
         </div>
-        <div className="column col col-sm-12 row socials">
-          {Socials().slice(1)}
-        </div>
+        <div className="column col col-sm-12">{Socials().slice(0, 2)}</div>
       </div>
     </footer>
   );

@@ -7,8 +7,8 @@ const data = {
   GitHub: [FaGithub, config.github],
   LinkedIn: [FaLinkedin, config.linkedin],
   Email: [FaAt, "/#contact"],
-  Portfolio: [() => <span>Portfolio</span>, "/portfolio"],
-  Resume: [() => <span>Resume</span>, "/resume"],
+  // Portfolio: [() => <span>Portfolio</span>, "/portfolio"],
+  // Resume: [() => <span>Resume</span>, "/resume"],
 };
 
 const Socials = () =>
